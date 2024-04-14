@@ -131,3 +131,16 @@ footer {
     background-color: rgba(0,0,0,0.6); 
     padding-top: 400px;
 }
+
+#restart-btn-id {
+    background-color: #ccd5ae;
+    border: 1px solid #724e2a;
+    border-radius: 30px;
+    padding: 4px;
+    width: 120px;
+    height: 30px;
+}
+
+#restart-btn-id:hover {
+    background-color: #8b9666;
+}
