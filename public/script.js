@@ -2,18 +2,15 @@ const width = 1840;
 const height = 780;
 let canvas;
 let context;
-let gameMenu;
-let countDown;
-let clickListener;
 let totalScore = 0;
 let difficulty = 'easy';
-let timer;
+let clickListener;
+let timer; // mivel ezeket a valtozokat sok helyen hasznalom, ezert itt deklaralom oket
 
+// ez a fuggveny beallitja a canvas meretet, szinet, betutipusat, es a szovegeket
 function initializeCanvas() {
   canvas = document.getElementById('game-canvas-id');
   context = canvas.getContext('2d');
-  gameMenu = document.getElementById('game-menu-id');
-  countDown = document.getElementById('timer-id');
   canvas.width = width;
   canvas.height = height;
   canvas.style.width = `${width}px`;
@@ -26,10 +23,12 @@ function initializeCanvas() {
   context.fillText('Round: 1/10', 40, 15);
 }
 
+// betoltjuk a kepet
 const helloThereImage = new Image();
 helloThereImage.src = 'images/hello_there.jpeg';
 document.addEventListener('DOMContentLoaded', () => initializeCanvas());
 
+// beallitjuk a kep megjelenitesenek idejet
 function setDifficulty() {
   switch (difficulty) {
     case 'easy':
@@ -42,13 +41,14 @@ function setDifficulty() {
       timer = 0.125;
       break;
     case 'impossible':
-      timer = 0.05;
+      timer = 0.01;
       break;
     default:
       timer = 0.375;
   }
 }
 
+// a displayCurrent kiirja a jelenlegi kor eredmenyet es a closedCurrent bezarja azt
 function closeCurrent(currentScoreText) {
   currentScoreText.style.display = 'none';
 }
@@ -62,6 +62,7 @@ function displayCurrent(round, currentScore, distance) {
   setTimeout(() => closeCurrent(currentScoreText), 1000);
 }
 
+// a kor vegen updateoljuk a pontszamot es a kort
 function updateScoreAndRound(score = 0, round = 1) {
   totalScore += score;
   context.clearRect(canvas.width - 150, 0, 150, 30);
@@ -70,6 +71,7 @@ function updateScoreAndRound(score = 0, round = 1) {
   context.fillText(`Round: ${round + 1}/10`, 40, 15);
 }
 
+// a jatek veget itt kezeljuk
 function endGame() {
   context.clearRect(0, 0, canvas.width, canvas.height);
   const gameOver = document.getElementById('game-over-id');
@@ -78,6 +80,7 @@ function endGame() {
   gameOver.style.display = 'block';
 }
 
+// a jatek egy koreben a kep megjelenitese es a logikaja
 function playRound(round = 0) {
   const imgWidth = 60;
   const imgHeight = 40;
@@ -102,6 +105,7 @@ function playRound(round = 0) {
       const imageCenterY = y + imgHeight / 2;
       const distanceX = Math.abs(mouseX - imageCenterX);
       const distanceY = Math.abs(mouseY - imageCenterY);
+      // tavolsag szamitas
       const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
 
       let currentScore = Math.round(10 - distance / 100);
@@ -111,7 +115,7 @@ function playRound(round = 0) {
 
       updateScoreAndRound(currentScore, round + 1);
       displayCurrent(round, currentScore, distance);
-      // Remove the image to prevent it from staying if clicked quickly
+      // cleareljuk a canvast, hogy ne maradjon ott a kep ha gyorsan kattintunk
       context.clearRect(x - 1, y - 1, imgWidth + 3, imgHeight + 3);
       setTimeout(() => playRound(round + 1), 1000);
       if (round === 9) {
@@ -121,13 +125,16 @@ function playRound(round = 0) {
   );
 }
 
+// a jatek kezdete
 function pictureGame() {
   const round = 0;
   helloThereImage.onload = () => playRound(round);
   helloThereImage.src = 'images/hello_there.jpeg';
 }
 
+// a jatek elotti visszaszamlalas
 function startTimer() {
+  const countDown = document.getElementById('timer-id');
   let count = 3;
   const counter = setInterval(() => {
     count--;
@@ -141,11 +148,14 @@ function startTimer() {
   }, 1000);
 }
 
+// a menut bezarjuk es elinditjuk a visszaszamlalast
 function closeMenu() {
+  const gameMenu = document.getElementById('game-menu-id');
   gameMenu.style.display = 'none';
   startTimer();
 }
 
+// a menuben beallitjuk a nehezseget es utana be is zarjuk
 function displayMenu() {
   document.getElementById('easy-btn-id').addEventListener('click', () => {
     difficulty = 'easy';
@@ -169,4 +179,5 @@ function displayMenu() {
   });
 }
 
+// a menut megjelenitjuk miutan betoltodott az oldal
 window.onload = () => displayMenu();

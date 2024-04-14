@@ -51,7 +51,7 @@ body {
     margin-bottom: 20px;
 }
 
-.game-menu-content input {
+.game-menu-content button {
     background-color: #ccd5ae;
     border: 1px solid #724e2a;
     border-radius: 30px;
@@ -60,7 +60,7 @@ body {
     height: 30px;
 }
 
-.game-menu-content input:hover {
+.game-menu-content button:hover {
     background-color: #8b9666;
 }
 
