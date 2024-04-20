@@ -1,6 +1,7 @@
 {
   "name": "webprog-lab",
   "version": "1.0.0",
+  "type": "module",
   "devDependencies": {
     "eslint": "8.37.0",
     "eslint-config-airbnb-base": "15.0.0",
@@ -8,7 +9,16 @@
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-prettier": "4.2.1",
     "html-validate": "8.9.1",
+    "nodemon": "^3.1.0",
     "prettier": "2.8.7"
+  },
+  "scripts": {
+    "start": "node expressserver.js",
+    "dev": "nodemon expressserver.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "validate": "html-validate 'public/**/*.html'"
   },
   "dependencies": {
     "express": "^4.19.2"
