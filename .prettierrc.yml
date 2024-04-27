@@ -10,4 +10,3 @@ overrides:
       - "**/*.yaml"
     options:
       singleQuote: false
-      

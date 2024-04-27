@@ -21,9 +21,12 @@
         </nav>
       </div>
     </header>
-    <div id="home-content">
-      <h2>online classbook. Here you can find all the information you need about your classes.</h2>
-    </div>
+
+    <form id="delete-class" action="/deleteclass" method="POST">
+      <h1>Delete class</h1>
+      <p>CODE: <input type="text" name="code" required /></p>
+      <p><input class="submit-delete-class-btn" type="submit" value="DELETE!" /></p>
+    </form>
   </body>
 
   <footer>Korpos Botond, kbim2251</footer>

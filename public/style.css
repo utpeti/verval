@@ -1,221 +1,394 @@
 header,
-body{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .main-title {
-    user-select: none;
+  user-select: none;
 }
 
 .main-title h1 {
-    text-align: center;
-    color: #8ecae6;
-    font-size: 30px;
-    background-color: #023047;
-    margin: 0;
-    padding-bottom: 5px;
+  text-align: center;
+  color: #8ecae6;
+  font-size: 30px;
+  background-color: #023047;
+  margin: 0;
+  padding-bottom: 5px;
 }
 
 .main-title h2 {
-    text-align: center;
-    color: #023047;
-    font-size: 15px;
-    background-color: #ffb703;
-    margin: 0;
+  text-align: center;
+  color: #023047;
+  font-size: 15px;
+  background-color: #ffb703;
+  margin: 0;
 }
 
 #main-menu {
-    background-color: #023047;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    user-select: none;
+  background-color: #023047;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  user-select: none;
 }
 
 #main-menu ul {
-    list-style-type: none;
-    margin: 0;
-    padding-left: 0;
-    padding-right: 0;
-    display: flex;
-    flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+  display: flex;
+  flex-direction: row;
 }
 
 #main-menu li {
-    margin: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-align: center;
-    width: 100%;
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  width: 100%;
 }
 
 #main-menu a {
-    color: #8ecae6;
-    text-decoration: none;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-width: 1px;
-    border-color: #8ecae6;
-    border-style: solid;
-    border-radius: 10px;
-    font-size: 18px;
-    display: inline-block;
-    width: 70%;
+  color: #8ecae6;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-width: 1px;
+  border-color: #8ecae6;
+  border-style: solid;
+  border-radius: 10px;
+  font-size: 18px;
+  display: inline-block;
+  width: 70%;
 }
 
 #main-menu a:hover {
-    background-color: #8ecae6;
-    color: #023047;
+  background-color: #8ecae6;
+  color: #023047;
 }
 
 #main-menu a:active {
-    background-color: #ffb703;
-    color: #023047;
+  background-color: #ffb703;
+  color: #023047;
 }
 
 body {
-    margin: 0;
-    background-color: #0d2e29;
+  margin: 0;
+  background-color: #0d2e29;
 }
 
 #home-content {
-    user-select: none;
+  user-select: none;
 }
 
-#home-content h1{
-    color: #d2dadd;
-    text-align: center;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 50px;
-    margin-top: 300px;
+#home-content h1 {
+  color: #d2dadd;
+  text-align: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 50px;
+  margin-top: 300px;
 }
 
-#home-content h2{
-    color: #d2dadd;
-    text-align: center;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 30px;
-    margin-top: 50px;
+#home-content h2 {
+  color: #d2dadd;
+  text-align: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 30px;
+  margin-top: 50px;
 }
 
 #classes {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
-#class-title {
-    text-align: center;
-    color: #d2dadd;
+#assignments {
+  display: flex;
+  flex-direction: row;
 }
 
-#classes ul {
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
+#class-title,
+#assignment-title {
+  text-align: center;
+  color: #d2dadd;
 }
 
-#classes li {
-    flex: 1 1 200px;
-    padding: 30px;
+#classes ul,
+#assignments ul {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#classes li,
+#assignments li {
+  flex: 1 1 200px;
+  padding: 30px;
 }
 
 #add-class {
-    text-align: center;
-    color: #d2dadd;
-    display: none;
-    position: fixed; 
-    z-index: 1;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;  
-    background-color: rgba(0,0,0,0.9); 
-    padding-top: 140px;
+  text-align: center;
+  color: #d2dadd;
+  position: fixed;
+  width: 100%;
+  height: 100%;
 }
 
-#add-class input[type="submit"] {
-    background-color: #35832b;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-    border: 1px solid #d2dadd;
-    color: #d2dadd;
+#add-class input[type='submit'] {
+  background-color: #35832b;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid #d2dadd;
+  color: #d2dadd;
 }
 
-#add-class input[type="submit"]:hover {
-    background-color: #23551c;
+#add-class input[type='submit']:hover {
+  background-color: #23551c;
 }
 
-#add-class input[type="submit"]:active {
-    background-color: #1a3316;
+#add-class input[type='submit']:active {
+  background-color: #1a3316;
 }
 
-#add-class input[name="code"] {
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-    border: 1px solid #d2dadd;
+#add-class input[name='code'] {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid #d2dadd;
 }
 
-#add-class textarea[name="description"] {
-    padding: 10px;
-    margin: 10px;
-    height: 300px;
-    width: 600px;
-    resize: none;
-    border-radius: 10px;
-    border: 1px solid #d2dadd;
+#add-class textarea[name='description'] {
+  padding: 10px;
+  margin: 10px;
+  height: 300px;
+  width: 600px;
+  resize: none;
+  border-radius: 10px;
+  border: 1px solid #d2dadd;
 }
 
 #add-class-button {
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #35832b;
-    border: 1px solid #d2dadd;
-    color: #d2dadd;
-    cursor:pointer;
-    user-select: none;
-    display: block;
-    margin: auto;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  width: 10%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #35832b;
+  border: 1px solid #d2dadd;
+  color: #d2dadd;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+  margin: auto;
+}
+
+#add-assignment-button {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  width: 10%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #35832b;
+  border: 1px solid #d2dadd;
+  color: #d2dadd;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+  margin: auto;
+  margin-top: 30px;
 }
 
 #add-class-button:hover {
-    background-color: #23551c;
+  background-color: #23551c;
 }
 
 #add-class-button:active {
-    background-color: #1a3316;
+  background-color: #1a3316;
+}
+
+#add-assignment-button:hover {
+  background-color: #23551c;
+}
+
+#add-assignment-button:active {
+  background-color: #1a3316;
+}
+
+#add-assignment {
+  text-align: center;
+  color: #d2dadd;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+#add-assignment input[type='submit'] {
+  background-color: #35832b;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid #d2dadd;
+  color: #d2dadd;
+}
+
+#add-assignment input[type='submit']:hover {
+  background-color: #23551c;
+}
+
+#add-assignment input[type='submit']:active {
+  background-color: #1a3316;
+}
+
+#add-assignment input[name='code'] {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid #d2dadd;
+}
+
+#add-assignment input[name='deadline'] {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid #d2dadd;
+}
+
+#add-assignment textarea[name='description'] {
+  padding: 10px;
+  margin: 10px;
+  height: 300px;
+  width: 600px;
+  resize: none;
+  border-radius: 10px;
+  border: 1px solid #d2dadd;
+}
+
+.subject {
+  background-color: #01ca7d;
+  border: 1px solid #d2dadd;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  color: #d2dadd;
+}
+
+.subject h2 {
+  text-decoration: none;
+  color: #d2dadd;
+  font-size: 16px;
+}
+
+.subject p {
+  color: #d2dadd;
+  font-size: 11px;
+}
+
+.assgiment {
+  background-color: #01ca7d;
+  border: 1px solid #d2dadd;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  color: #d2dadd;
+}
+
+.assgiment h2 {
+  text-decoration: none;
+  color: #d2dadd;
+  font-size: 16px;
+}
+
+#delete-class {
+  text-align: center;
+  color: #d2dadd;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+#delete-class input[type='submit'] {
+  background-color: #bd0808;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid #d2dadd;
+  color: #d2dadd;
+}
+
+#delete-class input[type='submit']:hover {
+  background-color: #8a0606;
+}
+
+#delete-class input[type='submit']:active {
+  background-color: #5c0404;
+}
+
+#delete-class input[name='code'] {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid #d2dadd;
+}
+
+#delete-class-button {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  width: 10%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #bd0808;
+  border: 1px solid #d2dadd;
+  color: #d2dadd;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 80px;
+}
+
+#delete-class-button:hover {
+  background-color: #8a0606;
+}
+
+#delete-class-button:active {
+  background-color: #5c0404;
 }
 
 footer {
-    user-select: none;
-    text-align: center;
-    color: #d2dadd;
-    background-color: rgba(0, 0, 0, 0.3);
-    padding-top: 15px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 2.5rem;  
+  user-select: none;
+  text-align: center;
+  color: #d2dadd;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding-top: 15px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
 }
 
 @media (max-width: 1400px) {
-    #main-menu ul {
-        flex-direction: column;
-    }
+  #main-menu ul {
+    flex-direction: column;
+  }
 
-    #home-content h1 {
-        margin-top: 100px;
-    }
+  #home-content h1 {
+    margin-top: 100px;
+  }
 }
 
 @media (max-height: 800px) {
-    #home-content h1 {
-        margin-top: 20px;
-    }
+  #home-content h1 {
+    margin-top: 20px;
+  }
 
-    #home-content h2 {
-        margin-top: 0px;
-    }
+  #home-content h2 {
+    margin-top: 0px;
+  }
 }
