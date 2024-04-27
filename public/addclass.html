@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Webprog catalogE</title>
-    <link href="style.css" rel="stylesheet" />
-    <script src="script.js"></script>
-  </head>
+    <head>
+        <meta charset="utf-8">
+        <title>Webprog catalogE</title>
+        <link href="style.css" rel="stylesheet">
+        <script src="script.js"></script>
+    </head>
 
   <body>
-    <header class="main-title">
-      <h1>catalogE</h1>
-      <h2>the online classbook</h2>
-      <div id="main-menu">
-        <nav>
-          <ul>
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="classbook.html">CLASSBOOK</a></li>
-            <li><a href="about.html">ABOUT</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+      <header class="main-title">
+          <h1>catalogE</h1>
+          <h2>the online classbook</h2>
+          <div id="main-menu">
+              <nav>
+                  <ul>
+                      <li><a href="index.html">HOME</a></li>
+                      <li><a href="classbook.html">CLASSBOOK</a></li>
+                      <li><a href="about.html">ABOUT</a></li>
+                  </ul>
+              </nav>
+          </div>
+      </header>
 
-    <form id="add-class" action="/addclass" method="POST">
-      <h1>Add class</h1>
-      <p>CODE: <input type="text" name="code" required /></p>
-      <p>DESCRIPTION:</p>
-      <textarea type="text" name="description" value="Provide a basic description for the subject!" required></textarea>
-      <p><input class="submit-class-btn" type="submit" value="CREATE!" /></p>
-    </form>
+      <form id="add-class" action="/addclass" method="POST">
+          <h1>Add class</h1>
+          <p>CODE: <input type="text" name="code" required></p>
+          <p>DESCRIPTION:</p>
+          <textarea type="text" name="description" value="Provide a basic description for the subject!" required></textarea>
+          <p><button class="submit-class-btn" type="submit">CREATE!</button></p>
+      </form>
+      <footer>
+          Korpos Botond, kbim2251
+      </footer>
   </body>
 
-  <footer>Korpos Botond, kbim2251</footer>
 </html>

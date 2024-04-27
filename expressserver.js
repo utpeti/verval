@@ -41,7 +41,6 @@ app.post('/addclass', express.urlencoded({ extended: true }), (req, res) => {
   `;
 
   classesAdd(req.body.code, req.body.description);
-  console.log(classes);
   res.set('Content-Type', 'text/plain;charset=utf-8');
   res.send(serverResponse);
 });
@@ -59,7 +58,6 @@ app.post('/deleteclass', express.urlencoded({ extended: true }), (req, res) => {
   const serverResponse = `Following class has been deleted:
     CODE: ${req.body.code}
   `;
-  console.log(classes);
   res.set('Content-Type', 'text/plain;charset=utf-8');
   res.send(serverResponse);
 });
@@ -138,7 +136,6 @@ app.post('/addassignment', multerUploader.single('uploadedfile'), (req, res) => 
     FILE: ${req.file.originalname}
     SIZE: ${req.file.size} bytes
   `;
-  console.log(classes);
   res.set('Content-Type', 'text/plain;charset=utf-8');
   res.send(serverResponse);
 });
