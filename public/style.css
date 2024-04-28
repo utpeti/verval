@@ -133,7 +133,7 @@ body {
   height: 100%;
 }
 
-#add-class input[type='submit'] {
+#add-class button {
   background-color: #35832b;
   padding: 10px;
   margin: 10px;
@@ -142,11 +142,11 @@ body {
   color: #d2dadd;
 }
 
-#add-class input[type='submit']:hover {
+#add-class button:hover {
   background-color: #23551c;
 }
 
-#add-class input[type='submit']:active {
+#add-class button:active {
   background-color: #1a3316;
 }
 
@@ -226,7 +226,7 @@ body {
   height: 100%;
 }
 
-#add-assignment input[type='submit'] {
+#add-assignment button {
   background-color: #35832b;
   padding: 10px;
   margin: 10px;
@@ -235,11 +235,11 @@ body {
   color: #d2dadd;
 }
 
-#add-assignment input[type='submit']:hover {
+#add-assignment button:hover {
   background-color: #23551c;
 }
 
-#add-assignment input[type='submit']:active {
+#add-assignment button:active {
   background-color: #1a3316;
 }
 

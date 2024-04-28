@@ -4,6 +4,7 @@ import { existsSync, mkdirSync, unlink } from 'fs';
 import morgan from 'morgan';
 import multer from 'multer';
 
+// ebben az arrayben fogom tarolni az osztalyokat
 const classes = [];
 
 const publicDir = join(process.cwd(), 'public');
@@ -11,6 +12,7 @@ const app = express();
 app.use(morgan('common'));
 app.use(express.static(publicDir));
 
+// ebben a fuggvenyben adok hozza egy osztalyt az arrayhez
 function classesAdd(code, description) {
   const newClass = {
     code,
@@ -20,10 +22,13 @@ function classesAdd(code, description) {
   classes.push(newClass);
 }
 
+// ez a fuggveny fontos volt, hogy a kulonbozo tantargyakat az arrayen belul a tantargyak
+// egyedi kodja alapjan tudjam megkapni
 function getIndexByCode(code) {
   return classes.findIndex((element) => element.code === code);
 }
 
+// kulonbozo endpointok a formokhoz illetve segedfuggvenyek a tantargyak es feladatok hozzaadasahoz
 app.post('/addclass', express.urlencoded({ extended: true }), (req, res) => {
   if (!(req.body.code && req.body.description)) {
     res.status(400).send('Missing required fields.');
@@ -45,7 +50,7 @@ app.post('/addclass', express.urlencoded({ extended: true }), (req, res) => {
   res.send(serverResponse);
 });
 
-function deleteClass(code) {
+function classesDelete(code) {
   classes.splice(getIndexByCode(code), 1);
 }
 
@@ -54,7 +59,7 @@ app.post('/deleteclass', express.urlencoded({ extended: true }), (req, res) => {
     res.status(400).send("Class doesn't exists.");
     return;
   }
-  deleteClass(req.body.code);
+  classesDelete(req.body.code);
   const serverResponse = `Following class has been deleted:
     CODE: ${req.body.code}
   `;
@@ -92,29 +97,19 @@ app.post('/addassignment', multerUploader.single('uploadedfile'), (req, res) => 
   if (!(req.body.code && req.body.description && req.body.deadline)) {
     res.status(400).send('Missing required fields.');
     successfullUpload = false;
-  }
-
-  if (classes[getIndexByCode(req.body.code)] === undefined) {
+  } else if (classes[getIndexByCode(req.body.code)] === undefined || classes.length === 0) {
     res.status(400).send("Class doesn't exists.");
     successfullUpload = false;
-  }
-
-  if (!req.file) {
+  } else if (!req.file) {
     res.status(400).send('No file uploaded.');
     successfullUpload = false;
-  }
-
-  if (req.file.size > 10 * 1024 * 1024) {
+  } else if (req.file.size > 10 * 1024 * 1024) {
     res.status(400).send('File too large.');
     successfullUpload = false;
-  }
-
-  if (new Date(req.body.deadline) <= new Date()) {
+  } else if (new Date(req.body.deadline) <= new Date()) {
     res.status(400).send('Invalid date.');
     successfullUpload = false;
-  }
-
-  if (!req.file.mimetype.match(/^application\/pdf$/)) {
+  } else if (!req.file.mimetype.match(/^application\/pdf$/)) {
     res.status(400).send('Invalid file type.');
     successfullUpload = false;
   }
