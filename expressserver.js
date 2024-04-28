@@ -60,6 +60,7 @@ app.post('/deleteclass', express.urlencoded({ extended: true }), (req, res) => {
     return;
   }
   classesDelete(req.body.code);
+
   const serverResponse = `Following class has been deleted:
     CODE: ${req.body.code}
   `;

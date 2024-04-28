@@ -310,7 +310,7 @@ body {
   height: 100%;
 }
 
-#delete-class input[type='submit'] {
+#delete-class button {
   background-color: #bd0808;
   padding: 10px;
   margin: 10px;
@@ -319,11 +319,11 @@ body {
   color: #d2dadd;
 }
 
-#delete-class input[type='submit']:hover {
+#delete-class button:hover {
   background-color: #8a0606;
 }
 
-#delete-class input[type='submit']:active {
+#delete-class button:active {
   background-color: #5c0404;
 }
 
