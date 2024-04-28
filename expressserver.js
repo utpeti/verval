@@ -94,6 +94,7 @@ function assignmentAdd(code, description, deadline, filename, size) {
 
 app.post('/addassignment', multerUploader.single('uploadedfile'), (req, res) => {
   let successfullUpload = true;
+
   if (!(req.body.code && req.body.description && req.body.deadline)) {
     res.status(400).send('Missing required fields.');
     successfullUpload = false;
@@ -118,6 +119,7 @@ app.post('/addassignment', multerUploader.single('uploadedfile'), (req, res) => 
     unlink(`./uploaded-files/${req.file.filename}`, (err) => {
       if (err) {
         console.error(err);
+        res.status(500).send('Internal server error.');
       }
     });
     return;
