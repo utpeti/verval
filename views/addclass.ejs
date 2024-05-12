@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <%- include('partials/head.ejs', { title: 'Classes' }) %>
+    <body>
+        <%- include('partials/header.ejs') %>
+
+        <form id="add-class" action="/addclass" method="POST">
+            <% if (error) { %>
+                <p class="error-class"><%= error %></p>
+            <% } %>
+            <h1>Add class</h1>
+            <p>NAME: <input type="text" name="name" required></p>
+            <p>DESCRIPTION:</p>
+            <textarea type="text" name="description" value="Provide a basic description for the subject!" required></textarea>
+            <p>SELECT STUDENTS:</p>
+            <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
+            <p>Hold down the Shift button to select a range of options.</p>
+            <% if (users.length) { %>
+                <select name="users" size="<%= users.length %>" multiple required>
+                    <% users.forEach((user) => { %>
+                        <option value="<%= user._id %>"><%= user.name %></option>
+                    <% }); %>
+                </select>
+            <% } else { %>
+                <p>No users found!</p>
+            <% } %>
+            <p><button class="submit-class-btn" type="submit">CREATE!</button></p>
+        </form>
+            
+        <%- include('partials/footer.ejs') %>
+
+    </body>
+
+</html>

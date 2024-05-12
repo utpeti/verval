@@ -1,0 +1,48 @@
+use('test');
+db.getCollection('users').insertOne({
+  name: 'John Doe',
+  email: 'johndoe@gmail.com',
+  role: 'student',
+});
+
+db.getCollection('users').insertOne({
+  name: 'Josh Doe',
+  email: 'joshdoe@yahoo.com',
+  role: 'student',
+});
+
+db.getCollection('users').insertOne({
+  name: 'Emily Doe',
+  email: 'emydoe@gmail.com',
+  role: 'student',
+});
+
+db.getCollection('users').insertOne({
+  name: 'Marry Dodedoe Doe',
+  email: 'ddarry@nothingsuspicious.ru',
+  role: 'student',
+});
+
+db.getCollection('users').insertOne({
+  name: 'Perry The Platypus',
+  email: 'paaaaarrryyyy@spies.us',
+  role: 'student',
+});
+
+db.getCollection('users').insertOne({
+  name: 'Dr. Doofenschmirtz Heinz',
+  email: 'doofernschmirtzevilinc@evil.sci',
+  role: 'teacher',
+});
+
+db.getCollection('users').insertOne({
+  name: 'Candace Flynn',
+  email: 'flynn@gmail.com',
+  role: 'student',
+});
+
+db.getCollection('users').insertOne({
+  name: 'Phineas Flynn',
+  email: 'flynn2@gmail.com',
+  role: 'student',
+});

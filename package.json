@@ -13,15 +13,18 @@
     "prettier": "2.8.7"
   },
   "scripts": {
-    "start": "node expressserver.js",
-    "dev": "nodemon expressserver.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "validate": "html-validate './public/*.html'"
   },
   "dependencies": {
+    "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "mongodb": "^6.6.0",
+    "mongoose": "^8.3.3",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1"
   }

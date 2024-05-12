@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <%- include('partials/head.ejs', { title: 'Classes' }) %>
+  <body>
+    <%- include('partials/header.ejs') %>
+
+        <form id="add-assignment" action="/class/<%= encodeURIComponent(classData._id) %>/addassignment" method="POST" enctype="multipart/form-data">
+            <% if (error) { %>
+                <p class="error-class"><%= error %></p>
+            <% } %>
+            <h1 class="add-assignment-maint">Add assignment</h1>
+            <h1><%= classData.name %></h1>
+            <p>NAME: <input type="text" name="name" required></p>
+            <p>DESCRIPTION:</p>
+            <textarea type="text" name="description" value="Provide a basic description for the subject!" required></textarea>
+            <p>DEADLINE: <input class="add-assignment-date" type="date" name="deadline" required></p>
+            <p>ASSIGMENT DETAILED DESCRIPTION: <input class="uploaded-file" type="file" name="uploadedfile" accept="application/pdf" required></p>
+            <p><button class="submit-assigment-btn" type="submit">CREATE!</button></p>
+        </form>
+    <%- include('partials/footer.ejs') %>
+    </body>
+
+</html>

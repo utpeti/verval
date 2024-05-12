@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <%- include('partials/head.ejs', { title: 'Classes' }) %>
+  <body>
+    <%- include('partials/header.ejs') %>
+    
+    <div class="all-classes">
+        <h1>Classes</h1>
+        <div id="classes">
+            <ul>
+            <% classes.forEach((classItem) => { %>
+                <li id="class-<%= classItem._id %>">
+                    <h2><a href="/class/<%= encodeURIComponent(classItem._id) %>"><%= classItem.name %></a></h2>
+                    <% if (classItem.description.length > 300) { %>
+                    <p><%= classItem.description.substring(0, 300)%>...</p>
+                    <% } else { %>
+                    <p><%= classItem.description %></p>
+                    <% } %>
+                    <button id="delete-class-button" onclick="deleteClass('<%= classItem._id %>')" name="delete-btn">Delete class</button>
+                </li>
+            <% }); %>
+            </ul>
+        </div>
+        <a id="add-class-button" href="/addclass">Add class</a>
+    </div>
+
+    <%- include('partials/footer.ejs') %>
+    
+  </body>
+</html>

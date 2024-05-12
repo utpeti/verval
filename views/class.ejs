@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <%- include('partials/head.ejs', { title: classData.name }) %>
+    <body id="class">
+        <%- include('partials/header.ejs') %>
+        
+        <div class="sidenav">
+            <h1>Menu</h1>
+            <a href="/class/<%= encodeURIComponent(classData._id) %>">Homepage</a>
+            <a href="/class/<%= encodeURIComponent(classData._id) %>/assignments">Assignments</a>
+        </div>
+    
+        <div id="classdescription">
+            <h1><%= classData.name %></h1>
+            <p><%= classData.description %></p>
+        </div>
+
+        <%- include('partials/footer.ejs') %>
+    
+  </body>
+</html>
