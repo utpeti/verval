@@ -20,11 +20,12 @@
                 <% if (assignments.length) { %>
                     <% for (let i = 0; i < assignments.length; i++) { %>
                         <% let assignment = assignments[i]; %>
-                        <li>
+                        <li id="assignment-<%= assignments[i]._id %>">
                             <h2><%= assignment.name %></h2>
                             <p><%= assignment.description %></p>
                             <p>Due: <%= assignment.duedate %></p>
                             <a href="/class/<%= classData._id %>/assignment/<%= assignment._id %>/uploaded-files/<%= assignment.descriptionFile %>">Open detailed description</a>
+                            <button id="delete-assignment-button" onclick="deleteAssignment('<%= assignment._id %>')">Delete assignment</button>
                         </li>
                     <% } %>
                 </ul>
@@ -32,6 +33,7 @@
                     <h3>No assignments yet!</h3>
                 <% } %>
         </div>
+        <div id="assignment-delete-message"></div>
         <a id="add-assignment-button" href="/class/<%= encodeURIComponent(classData._id) %>/addassignment">Add assignment</a>
 
         <%- include('partials/footer.ejs') %>

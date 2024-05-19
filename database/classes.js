@@ -27,7 +27,7 @@ export const addAssignmentToClass = (classID, assignmentID) =>
   });
 
 // Egy assignment torlese az osztalybol
-export const deleteAssigmentFromClass = (classID, assignmentID) =>
+export const deleteAssignmentFromClass = (classID, assignmentID) =>
   Class.findByIdAndUpdate(classID, {
     $pull: { assignments: assignmentID },
   });

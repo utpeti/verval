@@ -1,5 +1,5 @@
 import express from 'express';
-import { classValidation } from '../middleware/classValidation.js';
+import { classValidation } from '../validations/classValidation.js';
 import * as dbClass from '../database/classes.js';
 import * as dbUser from '../database/users.js';
 
@@ -27,7 +27,7 @@ router.get('/class/:classID', async (req, res) => {
   }
 });
 
-// Egy classhoz hozzaadasa
+// Egy class hozzaadasa
 router.get('/addclass', async (req, res) => {
   try {
     const users = await dbUser.getUsers();
@@ -50,6 +50,21 @@ router.post('/addclass', express.urlencoded({ extended: true }), async (req, res
     res.redirect('/');
   } catch (err) {
     res.status(500).render('error', { message: `ERROR: ${err.message}` });
+  }
+});
+
+// Class leiras megjelenitese
+router.get('/class/showmore/:classID', async (req, res) => {
+  const currentClassID = req.params.classID;
+  try {
+    const classItem = await dbClass.getClass(currentClassID);
+    if (classItem) {
+      res.json({ success: true, description: classItem.description });
+    } else {
+      res.json({ success: false, message: 'Class not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Server error' });
   }
 });
 

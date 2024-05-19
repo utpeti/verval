@@ -176,6 +176,7 @@ body {
   user-select: none;
   display: block;
   margin: auto;
+  margin-bottom: 30px;
 }
 
 #add-assignment-button {
@@ -183,7 +184,7 @@ body {
   font-size: 20px;
   font-weight: bold;
   text-decoration: none;
-  width: 10%;
+  width: 20%;
   padding: 10px;
   border-radius: 10px;
   background-color: #35832b;
@@ -193,9 +194,10 @@ body {
   user-select: none;
   display: block;
   margin: auto;
-  margin-left: 930px;
   margin-top: 30px;
-  margin-bottom: 40px;
+  position: absolute;
+  left: 53%;
+  transform: translateX(-50%);
 }
 
 #add-class-button:hover {
@@ -426,16 +428,18 @@ footer {
 #classdescription {
   user-select: none;
   color: #d2dadd;
-  margin-left: 140px;
+  margin-left: 110px;
   margin-top: 150px;
 }
 
 #classdescription p {
+  margin-left: 100px;
+  margin-right: 100px;
   padding: 40px;
 }
 
 #assignments {
-  margin-left: 140px;
+  margin-left: 80px;
 }
 
 #assignments h3 {
@@ -497,8 +501,8 @@ footer {
   font-size: 14px;
   font-weight: bold;
   text-decoration: none;
-  width: 20%;
-  padding: 10px;
+  width: 30%;
+  padding: 6px;
   border-radius: 10px;
   background-color: #bd0808;
   border: 1px solid #d2dadd;
@@ -508,6 +512,7 @@ footer {
   display: inline;
   margin: auto;
   margin-top: 40px;
+  margin-left: 180px;
 }
 
 #delete-assignment-button:hover {
@@ -530,6 +535,91 @@ footer {
   margin-top: 150px;
   z-index: 2;
 }
+
+.class-description {
+  color: #d2dadd;
+  display: none;
+}
+
+#show-more-button {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  width: 30%;
+  padding: 6px;
+  border-radius: 10px;
+  background-color: #35832b;
+  border: 1px solid #d2dadd;
+  color: #d2dadd;
+  cursor: pointer;
+  user-select: none;
+  display: inline;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+#show-more-button:hover {
+  background-color: #23551c;
+}
+
+#show-more-button:active {
+  background-color: #1a3316;
+  border-radius: 20px;
+}
+
+.show-less-button {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  width: 30%;
+  padding: 6px;
+  border-radius: 10px;
+  background-color: #35832b;
+  border: 1px solid #d2dadd;
+  color: #d2dadd;
+  cursor: pointer;
+  user-select: none;
+  display: none;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+#show-less-button:hover {
+  background-color: #23551c;
+}
+
+#show-less-button:active {
+  background-color: #1a3316;
+  border-radius: 20px;
+}
+
+#assignment-delete-message {
+  text-align: center;
+  z-index: 2;
+  color: #d2dadd;
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #d2dadd;
+  border-radius: 10px;
+  display: none;
+  width: 30%;
+  margin: auto;
+  margin-left: 720px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#assignment-delete-message.succes {
+  color: #35832b;
+  border-color: #35832b;
+}
+
+#assignment-delete-message.error {
+  color: #bd0808;
+  border-color: #bd0808;
+}
+
 
 @media (max-width: 1400px) {
   #main-menu ul {

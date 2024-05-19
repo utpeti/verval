@@ -1,6 +1,6 @@
 import multer from 'multer';
 import { join } from 'path';
-import { existsSync, mkdirSync, unlinkSync, readFile } from 'fs';
+import { existsSync, mkdirSync, unlink, readFile } from 'fs';
 
 // File muveletek kezelese
 
@@ -23,9 +23,13 @@ export const getFileName = (file) => file.filename;
 export const getFile = (filename) => join(uploadDir, filename);
 
 // Egy file torlese
-export const deleteFile = (filename) => {
+export const deleteFile = async (filename) => {
   const filePath = getFile(filename);
-  unlinkSync(filePath);
+  await unlink(filePath, (err) => {
+    if (err) {
+      console.error(`File delete unsuccessful: ${err.message}`);
+    }
+  });
 };
 
 // Egy file kuldese a kliensnek

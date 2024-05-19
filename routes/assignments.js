@@ -1,6 +1,6 @@
 import express from 'express';
 import { getFile, displayFile, deleteFile, multerUploader } from '../files/files.js';
-import { assignmentValidation } from '../middleware/assignmentValidation.js';
+import { assignmentValidation } from '../validations/assignmentValidation.js';
 import * as dbClass from '../database/classes.js';
 import * as dbAssignment from '../database/assignments.js';
 
@@ -55,6 +55,15 @@ router.get('/class/:classID/assignment/:assignmentID/uploaded-files/:filename', 
   } catch (err) {
     res.status(500).render('error', { message: `File error: ${err.message}` });
   }
+});
+
+// Egy assignment torlese
+router.delete('/deleteassignment', express.json(), (req, res) => {
+  const { assignmentID } = req.body;
+  dbAssignment
+    .deleteAssignment(assignmentID)
+    .then(() => res.json({ success: true }))
+    .catch((err) => res.json({ success: false, message: err.message }));
 });
 
 export default router;

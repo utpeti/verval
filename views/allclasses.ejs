@@ -11,11 +11,9 @@
             <% classes.forEach((classItem) => { %>
                 <li id="class-<%= classItem._id %>">
                     <h2><a href="/class/<%= encodeURIComponent(classItem._id) %>"><%= classItem.name %></a></h2>
-                    <% if (classItem.description.length > 300) { %>
-                    <p><%= classItem.description.substring(0, 300)%>...</p>
-                    <% } else { %>
-                    <p><%= classItem.description %></p>
-                    <% } %>
+                    <button id="show-more-button" onclick="showMore('<%= classItem._id %>')" name="show-more-btn">Show more</button>
+                    <p id="class-description-<%= classItem._id %>" class="class-description"><%= classItem.description %></p>
+                    <button id="show-less-button-<%= classItem._id %>" class="show-less-button" onclick="showLess('<%= classItem._id %>')" name="show-less-btn">Show less</button>
                     <button id="delete-class-button" onclick="deleteClass('<%= classItem._id %>')" name="delete-btn">Delete class</button>
                 </li>
             <% }); %>

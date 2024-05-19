@@ -1,4 +1,4 @@
-import { Assignment } from './schemas.js';
+import { Assignment, Class } from './schemas.js';
 import { deleteFile } from '../files/files.js';
 
 // Fuggvenyek az assignmentekhez kapcsolodo adatbazis muveletekhez
@@ -19,12 +19,12 @@ export const createAssignment = (classID, assignmentData, fileName) => {
 };
 
 // Egy assignment torlese
-export const deleteAssignment = (assignmentID) => {
-  const assignment = Assignment.findById(assignmentID);
-  if (assignment.descriptionFile) {
+export const deleteAssignment = async (assignmentID) => {
+  await Assignment.findById(assignmentID).then((assignment) => {
     deleteFile(assignment.descriptionFile);
-  }
-  Assignment.findByIdAndDelete(assignmentID);
+  });
+  await Class.updateMany({}, { $pull: { assignments: assignmentID } });
+  await Assignment.findByIdAndDelete(assignmentID);
 };
 
 // Egy classhoz tartozo assignmentek torlese
