@@ -2,7 +2,7 @@ import express from 'express';
 import { join } from 'path';
 import morgan from 'morgan';
 import { connectToDatabase } from './database/connection.js';
-import errorLogger from './validations/error.js';
+import errorLogger from './errors/error.js';
 import classRouter from './routes/classes.js';
 import assignmentRouter from './routes/assignments.js';
 
