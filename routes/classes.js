@@ -59,12 +59,12 @@ router.get('/class/showmore/:classID', async (req, res) => {
   try {
     const classItem = await dbClass.getClass(currentClassID);
     if (classItem) {
-      res.json({ success: true, description: classItem.description });
+      res.status(200).json({ description: classItem.description });
     } else {
-      res.json({ success: false, message: 'Class not found' });
+      res.status(404).json({ message: 'Class not found' });
     }
   } catch (error) {
-    res.status(500).json({ success: false, message: 'Server error' });
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -73,8 +73,8 @@ router.delete('/deleteclass', express.json(), (req, res) => {
   const { classID } = req.body;
   dbClass
     .deleteClass(classID)
-    .then(() => res.json({ success: true }))
-    .catch((err) => res.status(500).json({ success: false, message: err.message }));
+    .then(() => res.status(200))
+    .catch((err) => res.status(500).json({ message: err.message }));
 });
 
 export default router;

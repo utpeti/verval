@@ -1,0 +1,8 @@
+<div>
+    <% if (loggedIn === true) { %> 
+        <p><%= user.name %></p>
+        <button id="logout">Logout</button>
+    <% } else { %>
+        <button id="login">Login</button>
+    <% } %>
+</div>

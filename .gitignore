@@ -147,3 +147,7 @@ dist
 # Uploaded files by users
 
 uploaded-files/
+
+### VSCode ###
+
+.vscode/

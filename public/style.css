@@ -620,6 +620,23 @@ footer {
   border-color: #bd0808;
 }
 
+#error {
+  text-align: center;
+  color: #d2dadd;
+  background-color: rgba(179, 18, 18, 0.95);
+  padding: 10px;
+  border: 1px solid #d2dadd;
+  border-radius: 10px;
+  width: 30%;
+  max-width: 300px;
+  margin: auto;
+  margin-top: 470px;
+  z-index: 1;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
 
 @media (max-width: 1400px) {
   #main-menu ul {

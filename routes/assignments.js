@@ -62,8 +62,8 @@ router.delete('/deleteassignment', express.json(), (req, res) => {
   const { assignmentID } = req.body;
   dbAssignment
     .deleteAssignment(assignmentID)
-    .then(() => res.json({ success: true }))
-    .catch((err) => res.json({ success: false, message: err.message }));
+    .then(() => res.status(200))
+    .catch((err) => res.status(500).json({ message: `ERROR: ${err.message}` }));
 });
 
 export default router;

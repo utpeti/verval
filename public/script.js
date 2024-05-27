@@ -3,13 +3,13 @@ async function deleteClass(deleteClassID) {
   try {
     const confirmDelete = window.confirm('Are you sure you want to delete this class?');
     if (confirmDelete) {
-      const response = await fetch('/deleteclass', {
+      const res = await fetch('/deleteclass', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ classID: deleteClassID }),
       });
-      const responseData = await response.json();
-      if (responseData.success) {
+      const responseData = await res.json();
+      if (res.status === 200) {
         const classElement = document.getElementById(`class-${deleteClassID}`);
         classElement.parentNode.removeChild(classElement);
       } else {
@@ -17,6 +17,12 @@ async function deleteClass(deleteClassID) {
       }
     }
   } catch (error) {
+    const errorMessage = document.getElementById('error');
+    errorMessage.getElementsByTagName('p')[0].textContent = 'Error deleting class';
+    errorMessage.getAttribute('style').display = 'block';
+    setTimeout(() => {
+      errorMessage.getAttribute('style').display = 'none';
+    }, 3000);
     console.error(error);
   }
 }
@@ -29,7 +35,7 @@ async function showMore(classID) {
       headers: { 'Content-Type': 'application/json' },
     });
     const responseData = await res.json();
-    if (responseData.success) {
+    if (res.status === 200) {
       const descriptionElement = document.getElementById(`class-description-${classID}`);
       descriptionElement.style.display = 'block';
       descriptionElement.textContent = responseData.description;
@@ -39,6 +45,12 @@ async function showMore(classID) {
       alert(responseData.message);
     }
   } catch (error) {
+    const errorMessage = document.getElementById('error');
+    errorMessage.getElementsByTagName('p')[0].textContent = 'Error showing more';
+    errorMessage.getAttribute('style').display = 'block';
+    setTimeout(() => {
+      errorMessage.getAttribute('style').display = 'none';
+    }, 3000);
     console.error(error);
   }
 }
@@ -51,6 +63,12 @@ function showLess(classID) {
     const showLessButton = document.getElementById(`show-less-button-${classID}`);
     showLessButton.style.display = 'none';
   } catch (error) {
+    const errorMessage = document.getElementById('error');
+    errorMessage.getElementsByTagName('p')[0].textContent = 'Error showing less';
+    errorMessage.getAttribute('style').display = 'block';
+    setTimeout(() => {
+      errorMessage.getAttribute('style').display = 'none';
+    }, 3000);
     console.error(error);
   }
 }
@@ -60,14 +78,14 @@ async function deleteAssignment(deleteAssignmentID) {
   try {
     const confirmDelete = window.confirm('Are you sure you want to delete this assignment?');
     if (confirmDelete) {
-      const response = await fetch('/deleteassignment', {
+      const res = await fetch('/deleteassignment', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ assignmentID: deleteAssignmentID }),
       });
-      const responseData = await response.json();
+      const responseData = await res.json();
       const message = document.getElementById('assignment-delete-message');
-      if (responseData.success) {
+      if (res.status === 200) {
         const assignmentElement = document.getElementById(`assignment-${deleteAssignmentID}`);
         assignmentElement.parentNode.removeChild(assignmentElement);
         message.textContent = 'Assignment deleted successfully';
@@ -82,6 +100,13 @@ async function deleteAssignment(deleteAssignmentID) {
       }, 3000);
     }
   } catch (error) {
+    const message = document.getElementById('assignment-delete-message');
+    message.textContent = 'Error deleting assignment';
+    message.className = 'error';
+    message.style.display = 'block';
+    setTimeout(() => {
+      message.style.display = 'none';
+    }, 3000);
     console.error(error);
   }
 }
