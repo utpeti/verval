@@ -1,3 +1,4 @@
+// authorization middleware ami a felhasznalo jogosultsagat vizsgalja
 export function authorize(roles = ['student', 'teacher']) {
   return (req, res, next) => {
     if (!roles.includes(req.session.user.role)) {
