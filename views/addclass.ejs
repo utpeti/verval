@@ -2,7 +2,7 @@
 <html>
     <%- include('partials/head.ejs', { title: 'Classes' }) %>
     <body>
-        <%- include('partials/header.ejs') %>
+        <%- include('partials/header.ejs', { user: user || {} }) %>
 
         <form id="add-class" action="/addclass" method="POST">
             <% if (error) { %>

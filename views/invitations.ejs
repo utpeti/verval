@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <%- include('partials/head.ejs', { title: 'Invitations' }) %>
+    <body>
+        <%- include('partials/header.ejs', { user: user || {} }) %>
+        
+        <div id="invitations">
+            <h1>Invitations</h1>
+            <ul>
+                <% invitations.forEach((invitationData) => { %>
+                    <li id="invitation-<%= invitationData._id %>">
+                        <span class="class"><%= invitationData.name %></span>
+                        <button id="accept-invitation-button" onclick="acceptInvitation('<%= invitationData._id %>')" class="accept-button">Accept</button>
+                        <button id="decline-invitation-button" onclick="declineInvitation('<%= invitationData._id %>')" class="decline-button">Decline</button>
+                    </li>
+                <% }) %>
+            </ul>
+        </div>
+
+        <div id="invitation-message">
+            <p>Invitation pending</p>
+        </div>
+
+        <%- include('partials/footer.ejs') %>
+    
+  </body>
+</html>

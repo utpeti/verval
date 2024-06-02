@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <%- include('partials/head.ejs', { title: 'Users' }) %>
+  <body>
+    <%- include('partials/header.ejs', { user: user || {} }) %>
+    
+    <%- include('partials/errormessage.ejs') %>
+    
+    <div id="listed-users">
+        <h1>Users</h1>
+        <ul>
+            <% users.forEach((userData) => { %>
+                <% if (userData._id.toString() === user._id) { return } %>
+                <li id="user-<%= userData._id %>">
+                    <span class="name"><%= userData.name %></span>
+                    <span class="role"><%= userData.role %></span>
+                    <button id="delete-user-button" onclick="deleteUser('<%= userData._id %>')" class="delete-button">Delete</button>
+                    <button id="edit-user-button" onclick="editUser('<%= userData._id %>')" class="edit-button">Edit</button>
+                    <button id="invite-user-button" onclick="inviteUser('<%= userData._id %>')" class="invite-button">Invite</button>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+
+    <div id="edit-user">
+        <h1>Edit user</h1>
+        <form id="edit-user-form" action="/edituser" method="post">
+            <label for="edit-user-role">Role</label>
+            <select name="role" id="edit-user-role" required>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+            </select>
+            <button id="save-button" type="submit">Save</button>
+            <button id="cancel-button" type="button">Cancel</button>
+        </form>
+    </div>
+
+    <div id="user-edit-message">
+        <p>User edited</p>
+    </div>
+
+    <div id="invite-user">
+        <h1>Invite user</h1>
+        <form id="invite-user-form" action="/invite" method="post">
+            <label for="invite-user-email">Class</label>
+            <select name="class" id="invite-user-class" required>
+                <% classes.forEach((classData) => { %>
+                    <option value="<%= classData._id %>"><%= classData.name %></option>
+                <% }) %>
+            </select>
+            <button id="invite-button" type="submit">Invite</button>
+            <button id="cancel-invite-button" type="button">Cancel</button>
+        </form>
+    </div>
+
+    <div id="invitation-message">
+        <p>Invitation sent</p>
+    </div>
+
+    <%- include('partials/footer.ejs') %>
+    
+  </body>
+</html>

@@ -1,6 +1,6 @@
 header,
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Arial', sans-serif;
 }
 
 header {
@@ -39,11 +39,13 @@ header {
 
 #main-menu ul {
   list-style-type: none;
-  margin: 0;
+  margin: auto;
   padding-left: 0;
   padding-right: 0;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  position: relative;
 }
 
 #main-menu li {
@@ -51,7 +53,7 @@ header {
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: center;
-  width: 100%;
+  width: auto;
 }
 
 #main-menu a {
@@ -64,7 +66,7 @@ header {
   border-radius: 10px;
   font-size: 18px;
   display: inline-block;
-  width: 70%;
+  padding: 5px 15px;
 }
 
 #main-menu a:hover {
@@ -77,8 +79,24 @@ header {
   color: #023047;
 }
 
+#user-info {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 10px;
+}
+
+#user-info span {
+  color: #d2dadd;
+  margin-right: 10px;
+}
+
+#login-from-header {
+  margin-right: 40px;
+}
+
 body {
-  margin: 0;
+  margin-top: 140px;
   background-color: #0d2e29;
 }
 
@@ -89,7 +107,7 @@ body {
 #home-content h1 {
   color: #d2dadd;
   text-align: center;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: 'Arial', sans-serif;
   font-size: 50px;
   margin-top: 300px;
 }
@@ -97,7 +115,7 @@ body {
 #home-content h2 {
   color: #d2dadd;
   text-align: center;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: 'Arial', sans-serif;
   font-size: 30px;
   margin-top: 50px;
 }
@@ -107,7 +125,7 @@ body {
   text-align: center;
   color: #d2dadd;
 }
-
+  
 #add-class {
   text-align: center;
   color: #d2dadd;
@@ -384,6 +402,12 @@ footer {
   flex-direction: row;
 }
 
+#no-classes {
+  text-align: center;
+  color: #d2dadd;
+  margin: auto;
+}
+
 #classes a {
   text-decoration: none;
   color: #d2dadd;
@@ -398,7 +422,7 @@ footer {
 
 #classes li {
   color: #d2dadd;
-  background-color: #03925b;
+  background-color: rgba(48, 163, 37, 0.5);
   border: 1px solid #d2dadd;
   border-radius: 10px;
   flex: 1 1 200px;
@@ -638,6 +662,505 @@ footer {
   display: none;
 }
 
+body#class-login-page {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #0d2e29 10%, #35832b 100%);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  color: white;
+}
+
+.login-title {
+  font-size: 36px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+form#login-id {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  width: 300px;
+  backdrop-filter: blur(10px);
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.login-input:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(24, 126, 3, 0.5);
+}
+
+.btn-submit-login {
+  width: 100%;
+  padding: 10px;
+  background-color: #35832b;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit-login:hover {
+  background-color: #23551c;
+}
+
+.btn-submit-login:focus {
+  outline: none;
+}
+
+.btn-submit-login:active {
+  background-color: #1a3316;
+}
+
+.signup-link {
+  text-decoration: none;
+  color: #8ecae6;
+}
+
+#login-error {
+  text-align: center;
+  color: #d2dadd;
+  background-color: rgba(179, 18, 18, 0.95);
+  padding: 10px;
+  border: 1px solid #d2dadd;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+#invitation {
+  text-align: center;
+  color: #d2dadd;
+  margin-top: 120px;
+}
+
+#invitation-form {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  width: 300px;
+  backdrop-filter: blur(10px);
+  margin-top: 20px;
+  margin: auto;
+}
+
+#invitation-form label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+#invitation-form input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+#invitation-form input:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(24, 126, 3, 0.5);
+}
+
+#invitation-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #35832b;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#invitation-form button:hover {
+  background-color: #23551c;
+}
+
+#invitation-form button:focus {
+  outline: none;
+}
+
+#invitation-form button:active {
+  background-color: #1a3316;
+}
+
+#main-menu li {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#listed-users {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #d2dadd;
+}
+
+#listed-users h1 {
+  text-align: center;
+  color: #d2dadd;
+  margin-bottom: 20px;
+}
+
+#listed-users ul {
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  max-width: 800px;
+}
+
+#listed-users li {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto auto auto;
+  align-items: center;
+  border: 1px solid #d2dadd;
+  background-color: #23551c;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+#listed-users li .name,
+#listed-users li .role {
+  padding: 0 10px;
+}
+
+#listed-users li button {
+  padding: 5px 10px;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#listed-users li .name,
+#listed-users li .role {
+  padding: 0 10px;
+}
+
+#listed-users li .invite-button {
+  padding: 5px 10px;
+  background-color: #35832b;
+  color: #d2dadd;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#listed-users li .invite-button:hover {
+  background-color: #13360f;
+}
+
+#listed-users li .invite-button:active {
+  background-color: #1a3316;
+}
+
+#listed-users li .edit-button {
+  padding: 5px 10px;
+  background-color: #ffb703;
+  color: #d2dadd;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#listed-users li .edit-button:hover {
+  background-color: #8e6b00;
+}
+
+#listed-users li .edit-button:active {
+  background-color: #5c4a00;
+}
+
+#listed-users li .delete-button {
+  padding: 5px 10px;
+  background-color: #bd0808;
+  color: #d2dadd;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#listed-users li .delete-button:hover {
+  background-color: #8a0606;
+}
+
+#listed-users li .delete-button:active {
+  background-color: #5c0404;
+}
+
+#edit-user h1 {
+  text-align: center;
+  color: #d2dadd;
+  display: none;
+}
+
+#edit-user-form {
+  display: none;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  width: 300px;
+  backdrop-filter: blur(10px);
+  margin-top: 20px;
+  margin: auto;
+}
+
+#edit-user-form select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #d2dadd;
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+#edit-user-form label {
+  display: block;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 5px;
+  color: #d2dadd;
+}
+
+#edit-user-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #35832b;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+#edit-user-form button:hover {
+  background-color: #23551c;
+}
+
+#edit-user-form button:focus {
+  outline: none;
+}
+
+#edit-user-form button:active {
+  background-color: #1a3316;
+}
+
+#user-edit-message {
+  text-align: center;
+  color: #d2dadd;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  border: 1px solid #d2dadd;
+  border-radius: 10px;
+  width: 30%;
+  max-width: 300px;
+  margin: auto;
+  margin-top: 20px;
+  display: none;
+}
+
+#user-edit-message.succes {
+  color: #35832b;
+  border-color: #35832b;
+}
+
+#user-edit-message.error {
+  color: #bd0808;
+  border-color: #bd0808;
+}
+
+#invite-user h1 {
+  text-align: center;
+  color: #d2dadd;
+  display: none;
+}
+
+#invite-user-form {
+  display: none;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  width: 300px;
+  backdrop-filter: blur(10px);
+  margin-top: 20px;
+  margin: auto;
+}
+
+#invite-user-form label {
+  display: block;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 5px;
+  color: #d2dadd;
+}
+
+#invite-user-form select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #d2dadd;
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+#invite-user-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #35832b;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+#invite-user-form button:hover {
+  background-color: #23551c;
+}
+
+#invite-user-form button:focus {
+  outline: none;
+}
+
+#invitations {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #d2dadd;
+}
+
+#invitations h1 {
+  text-align: center;
+  color: #d2dadd;
+  margin-bottom: 20px;
+}
+
+#invitations ul {
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  max-width: 800px;
+}
+
+#invitations li {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto auto auto;
+  align-items: center;
+  border: 1px solid #d2dadd;
+  background-color: #23551c;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+#invitations li .name,
+#invitations li .role {
+  padding: 0 10px;
+}
+
+#invitations li button {
+  padding: 5px 10px;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#invitations li .accept-button {
+  padding: 5px 10px;
+  background-color: #35832b;
+  color: #d2dadd;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-right: 4px;
+}
+
+#invitations li .accept-button:hover {
+  background-color: #13360f;
+}
+
+#invitations li .accept-button:active {
+  background-color: #1a3316;
+}
+
+#invitations li .decline-button {
+  padding: 5px 10px;
+  background-color: #bd0808;
+  color: #d2dadd;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#invitations li .decline-button:hover {
+  background-color: #8a0606;
+}
+
+#invitations li .decline-button:active {
+  background-color: #5c0404;
+}
+
+#invitation-message {
+  text-align: center;
+  color: #d2dadd;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  border: 1px solid #d2dadd;
+  border-radius: 10px;
+  width: 30%;
+  max-width: 300px;
+  margin: auto;
+  margin-top: 20px;
+  display: none;
+}
+
+#invitation-message.succes {
+  color: #35832b;
+  border-color: #35832b;
+}
+
+#invitation-message.error {
+  color: #bd0808;
+  border-color: #bd0808;
+}
+
 @media (max-width: 1400px) {
   #main-menu ul {
     flex-direction: column;
@@ -645,6 +1168,14 @@ footer {
 
   #home-content h1 {
     margin-top: 100px;
+  }
+
+  body {
+    margin-top: 300px;
+  }
+
+  #invitation {
+    margin-top: 300px;
   }
 }
 

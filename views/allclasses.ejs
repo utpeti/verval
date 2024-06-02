@@ -2,25 +2,34 @@
 <html>
   <%- include('partials/head.ejs', { title: 'Classes' }) %>
   <body>
-    <%- include('partials/header.ejs') %>
+    <%- include('partials/header.ejs', { user: user || {} }) %>
     
     <%- include('partials/errormessage.ejs') %>
     <div class="all-classes">
         <h1>Classes</h1>
+        <% if (user.classes.length === 0 && user.role !== 'teacher') { %>
+          <h3 id="no-classes">No classes yet!</h3>
+          <% } %>
         <div id="classes">
-            <ul>
+          <ul>
             <% classes.forEach((classItem) => { %>
+              <% if (classItem.users.includes(user._id) || classItem.owner == user._id) { %>
                 <li id="class-<%= classItem._id %>">
                     <h2><a href="/class/<%= encodeURIComponent(classItem._id) %>"><%= classItem.name %></a></h2>
                     <button id="show-more-button" onclick="showMore('<%= classItem._id %>')" name="show-more-btn">Show more</button>
                     <p id="class-description-<%= classItem._id %>" class="class-description"><%= classItem.description %></p>
                     <button id="show-less-button-<%= classItem._id %>" class="show-less-button" onclick="showLess('<%= classItem._id %>')" name="show-less-btn">Show less</button>
-                    <button id="delete-class-button" onclick="deleteClass('<%= classItem._id %>')" name="delete-btn">Delete class</button>
+                    <% if (user && user._id == classItem.owner && user.role === 'teacher') { %>
+                        <button id="delete-class-button" onclick="deleteClass('<%= classItem._id %>')" name="delete-btn">Delete class</button>
+                    <% } %>
                 </li>
+              <% } %>
             <% }); %>
             </ul>
         </div>
-        <a id="add-class-button" href="/addclass">Add class</a>
+        <% if (user.role === 'teacher') { %>
+            <a id="add-class-button" href="/addclass">Add class</a>
+        <% } %>
     </div>
 
     <%- include('partials/footer.ejs') %>

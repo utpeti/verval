@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <%- include('partials/head.ejs', { title: "catalogE login" }) %>
+    <body id="class-login-page">
+
+        <h1 class="login-title">catalogE</h1>
+        <h1 class="login-title">Login</h1>
+        
+        <form id="login-id" action="/login" method="POST">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="login-input" id="login-email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="login-input" id="login-password" name="password" required>
+            </div>
+            <button type="submit" class="btn-submit-login">Login</button>
+        </form>
+
+        <p class="login-link">Don't have an account? <a class="signup-link" href="/signup">Sign up</a></p>
+
+        <% if (error) { %>
+            <p id="signup-error"><%= error %></p>
+        <% } %>
+
+        <%- include('partials/footer.ejs') %>
+    
+    </body>
+</html>

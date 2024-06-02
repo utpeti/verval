@@ -38,6 +38,13 @@ const classSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  owner: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
+  ],
   users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   assignments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Assignment' }],
 });
@@ -60,6 +67,25 @@ const userSchema = new mongoose.Schema({
     required: true,
     enum: ['student', 'teacher'],
   },
+  password: {
+    type: String,
+    required: true,
+  },
   classes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Class' }],
+  invitations: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Class' }],
 });
 export const User = mongoose.model('User', userSchema);
+
+const invitationSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+  },
+  token: {
+    type: String,
+    required: true,
+  },
+});
+export const Invitation = mongoose.model('Invitation', invitationSchema);

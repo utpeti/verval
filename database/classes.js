@@ -1,5 +1,5 @@
 import { Class, Assignment, User } from './schemas.js';
-import { deleteFile } from '../files/files.js';
+import { deleteFile } from '../utils/files.js';
 
 // Fuggvenyek az osztalyokhoz kapcsolodo adatbazis muveletekhez
 
@@ -15,6 +15,7 @@ export const createClass = (classData) => {
     name: classData.name,
     description: classData.description,
     users: classData.users,
+    owner: classData.owner,
     assignments: [],
   });
   return newClass.save();
@@ -49,3 +50,12 @@ export const deleteClass = async (classID) => {
     $pull: { _id: classID },
   });
 };
+
+// Minden osztaly lekerese egy userhez, aki az ownerje az osztalynak
+export const getClassesOfOwner = (ownerID) => Class.find({ owner: ownerID });
+
+// Egy user hozzaadasa egy osztalyhoz
+export const addUserToClass = (classID, userID) =>
+  Class.findByIdAndUpdate(classID, {
+    $push: { users: userID },
+  });

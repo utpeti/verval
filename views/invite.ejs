@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <%- include('partials/head.ejs', { title: "Invite" }) %>
+    <body id="invitation">
+        <%- include('partials/header.ejs', { user: user || {} }) %>
+
+        <h1>Invite a new teacher</h1>
+
+        <form id="invitation-form" action="/invite" method="POST">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Send invitation</button>
+        </form>
+
+        <% if (error) { %>
+            <p><%= error %></p>
+        <% } %>
+
+        <%- include('partials/footer.ejs') %>
+    </body>
+</html>

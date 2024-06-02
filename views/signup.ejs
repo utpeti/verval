@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <%- include('partials/head.ejs', { title: "catalogE signup" }) %>
+    <body id="class-login-page">
+
+        <h1 class="login-title">catalogE</h1>
+        <h1 class="login-title">Sign up</h1>
+        
+        <form id="login-id" action="/signup" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="login-input" id="login-name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="login-input" id="login-email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="login-input" id="login-password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="password-confirm">Confirm password</label>
+                <input type="password" class="login-input" id="login-password-confirm" name="password2" required>
+            </div>
+            <button type="submit" class="btn-submit-login">Sign up</button>
+        </form>
+
+        <% if (error) { %>
+            <p id="login-error"><%= error %></p>
+        <% } %>
+
+        <%- include('partials/footer.ejs') %>
+    
+  </body>
+</html>

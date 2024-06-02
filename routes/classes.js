@@ -2,6 +2,7 @@ import express from 'express';
 import { classValidation } from '../validations/classValidation.js';
 import * as dbClass from '../database/classes.js';
 import * as dbUser from '../database/users.js';
+import { authorize } from '../middleware/authorization.js';
 
 // router az osztalyokhoz kapcsolodo endpointokhoz
 
@@ -11,7 +12,7 @@ const router = express.Router();
 router.get(['/', '/allclasses'], async (req, res) => {
   try {
     const classes = await dbClass.getClasses();
-    res.render('allclasses', { classes });
+    res.render('allclasses', { classes, user: req.session.user });
   } catch (err) {
     res.status(500).render('error', { message: `ERROR: ${err.message}` });
   }
@@ -21,30 +22,31 @@ router.get(['/', '/allclasses'], async (req, res) => {
 router.get('/class/:classID', async (req, res) => {
   try {
     const classData = await dbClass.getClass(req.params.classID);
-    res.render('class', { classData });
+    res.render('class', { classData, user: req.session.user });
   } catch (err) {
     res.status(500).render('error', { message: "Class doesn't exist" });
   }
 });
 
 // Egy class hozzaadasa
-router.get('/addclass', async (req, res) => {
+router.get('/addclass', authorize(['teacher']), async (req, res) => {
   try {
-    const users = await dbUser.getUsers();
-    res.render('addclass', { users, error: '' });
+    const users = await dbUser.getAllUsers();
+    res.render('addclass', { users, error: '', user: req.session.user });
   } catch (err) {
     res.status(500).render('error', { message: `ERROR: ${err.message}` });
   }
 });
 
 // Egy class hozzaadasa (POST)
-router.post('/addclass', express.urlencoded({ extended: true }), async (req, res) => {
+router.post('/addclass', express.urlencoded({ extended: true }), authorize(['teacher']), async (req, res) => {
   try {
     if (!classValidation(req.body)) {
-      const users = await dbUser.getUsers();
-      res.status(400).render('addclass', { users, error: 'Missing required fields' });
+      const users = await dbUser.getAllUsers();
+      res.status(400).render('addclass', { users, error: 'Missing required fields', user: req.session.user });
       return;
     }
+    req.body.owner = req.session.user._id;
     const newClass = await dbClass.createClass(req.body);
     newClass.users.forEach((user) => dbUser.addClassToUser(user, newClass._id));
     res.redirect('/');
@@ -69,11 +71,11 @@ router.get('/class/showmore/:classID', async (req, res) => {
 });
 
 // Egy class torlese
-router.delete('/deleteclass', express.json(), (req, res) => {
+router.delete('/deleteclass', express.json(), authorize(['teacher']), (req, res) => {
   const { classID } = req.body;
   dbClass
     .deleteClass(classID)
-    .then(() => res.status(200))
+    .then(() => res.status(200).send({ message: 'Class deleted successfully' }))
     .catch((err) => res.status(500).json({ message: err.message }));
 });
 

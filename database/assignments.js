@@ -1,5 +1,5 @@
 import { Assignment, Class } from './schemas.js';
-import { deleteFile } from '../files/files.js';
+import { deleteFile } from '../utils/files.js';
 
 // Fuggvenyek az assignmentekhez kapcsolodo adatbazis muveletekhez
 
