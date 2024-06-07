@@ -1,0 +1,10 @@
+<div class="sidenav">
+    <h1>Menu</h1>
+    <a href="/class/<%= encodeURIComponent(classData._id) %>">Homepage</a>
+    <a href="/class/<%= encodeURIComponent(classData._id) %>/assignments">Assignments</a>
+    <% if (user.role === 'teacher') { %>
+        <a href="/class/<%= encodeURIComponent(classData._id) %>/joinedlist">People</a>
+    <% } else if (user.role === 'student') { %>
+        <a href="/class/<%= encodeURIComponent(classData._id) %>/grades">Grades</a>
+    <% } %>
+</div>

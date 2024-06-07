@@ -23,7 +23,8 @@ router.post('/acceptinvitation', express.json(), authorize('student'), async (re
   try {
     const { classID } = req.body;
     const user = await dbUser.getUser(req.session.user._id);
-    await dbUser.addClassToUser(user, classID);
+    await dbUser.addClassToUser(user._id, classID);
+    await dbClass.addUserToClass(classID, user._id);
     await dbUser.deleteInvitationFromUser(user, classID);
     res.status(200).json({ message: 'Invitation accepted' });
   } catch (err) {
@@ -31,11 +32,12 @@ router.post('/acceptinvitation', express.json(), authorize('student'), async (re
   }
 });
 
-router.post('/declineinvitation', authorize('student'), async (req, res) => {
+router.post('/declineinvitation', express.json(), authorize('student'), async (req, res) => {
   try {
     const { classID } = req.body.classID;
     const user = await dbUser.getUser(req.session.user._id);
     await dbClass.declineInvitation(classID, user);
+    await dbUser.deleteInvitationFromUser(user, classID);
   } catch (err) {
     res.status(500).render('error', { message: `ERROR: ${err.message}` });
   }

@@ -11,6 +11,7 @@ import invitationRouter from './routes/invitation.js';
 import usersRouter from './routes/users.js';
 import authenticateMiddleware from './middleware/authentication.js';
 import classInvitationRouter from './routes/classinvitations.js';
+import studentsRouter from './routes/students.js';
 
 const app = express();
 connectToDatabase();
@@ -31,6 +32,7 @@ app.use('/', classRouter);
 app.use('/', assignmentRouter);
 app.use('/', usersRouter);
 app.use('/', classInvitationRouter);
+app.use('/', studentsRouter);
 
 app.use(errorLogger);
 

@@ -6,6 +6,9 @@
         
         <div id="invitations">
             <h1>Invitations</h1>
+            <% if (invitations.length === 0) { %>
+                <p>No invitations available</p>
+            <% } %>
             <ul>
                 <% invitations.forEach((invitationData) => { %>
                     <li id="invitation-<%= invitationData._id %>">
@@ -20,8 +23,5 @@
         <div id="invitation-message">
             <p>Invitation pending</p>
         </div>
-
-        <%- include('partials/footer.ejs') %>
-    
   </body>
 </html>

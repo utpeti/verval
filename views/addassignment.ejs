@@ -13,11 +13,11 @@
             <p>NAME: <input type="text" name="name" required></p>
             <p>DESCRIPTION:</p>
             <textarea type="text" name="description" value="Provide a basic description for the subject!" required></textarea>
+            <p>WEIGHT: <input type="number" name="weight" required>%</p>
             <p>DEADLINE: <input class="add-assignment-date" type="date" name="deadline" required></p>
             <p>ASSIGMENT DETAILED DESCRIPTION: <input class="uploaded-file" type="file" name="uploadedfile" accept="application/pdf" required></p>
             <p><button class="submit-assigment-btn" type="submit">CREATE!</button></p>
         </form>
-    <%- include('partials/footer.ejs') %>
     </body>
 
 </html>

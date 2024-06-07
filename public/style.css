@@ -96,6 +96,7 @@ header {
 }
 
 body {
+  margin: 0;
   margin-top: 140px;
   background-color: #0d2e29;
 }
@@ -272,6 +273,13 @@ body {
 }
 
 #add-assignment input[name='deadline'] {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid #d2dadd;
+}
+
+#add-assignment input[name='weight'] {
   padding: 10px;
   margin: 10px;
   border-radius: 10px;
@@ -509,6 +517,7 @@ footer {
   padding: 20px;
   display: block;
   margin: auto;
+  max-width: 700px;
 }
 
 #assignments a {
@@ -536,7 +545,6 @@ footer {
   display: inline;
   margin: auto;
   margin-top: 40px;
-  margin-left: 180px;
 }
 
 #delete-assignment-button:hover {
@@ -654,7 +662,7 @@ footer {
   width: 30%;
   max-width: 300px;
   margin: auto;
-  margin-top: 470px;
+  margin-top: 300px;
   z-index: 1;
   position: fixed;
   left: 50%;
@@ -1159,6 +1167,327 @@ form#login-id {
 #invitation-message.error {
   color: #bd0808;
   border-color: #bd0808;
+}
+
+#users-list-of-class {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #d2dadd;
+}
+
+#users-list-of-class h3 {
+  text-align: center;
+  color: #d2dadd;
+  margin-bottom: 20px;
+}
+
+#users-list-of-class ul {
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  max-width: 800px;
+}
+
+#users-list-of-class li {
+  list-style: none;
+  text-align: center;
+  border: 1px solid #d2dadd;
+  background-color: #23551c;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  height: 20px;
+  width: 10%;
+}
+
+#grades {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #d2dadd;
+}
+
+#grades h1 {
+  text-align: center;
+  color: #d2dadd;
+  margin-bottom: 20px;
+}
+
+#grades-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #d2dadd;
+}
+
+#grades-list ul {
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  max-width: 800px;
+}
+
+#grades-list li {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto auto auto;
+  align-items: center;
+  border: 1px solid #d2dadd;
+  background-color: #23551c;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+#grades-list li .class,
+#grades-list li .assgiment,
+#grades-list li .grade {
+  padding: 0 10px;
+}
+
+#assignments-std {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #d2dadd;
+}
+
+#assignments-std h1 {
+  text-align: center;
+  color: #d2dadd;
+  margin-bottom: 20px;
+}
+
+#assignment-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #d2dadd;
+}
+
+#assignment-list ul {
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  max-width: 800px;
+}
+
+#assignment-list li {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto auto auto;
+  align-items: center;
+  border: 1px solid #d2dadd;
+  background-color: #23551c;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+#assignment-list li .class,
+#assignment-list li .assgiment,
+#assignment-list li .deadline {
+  padding: 0 10px;
+}
+
+#assignment-grades {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #d2dadd;
+}
+
+#assignment-grades ul {
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  max-width: 800px;
+}
+
+#assignment-grades li {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto auto auto;
+  align-items: center;
+  border: 1px solid #d2dadd;
+  background-color: #23551c;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+#assignment-grades li .name,
+#assignment-grades li .grade,
+#assignment-grades li .grade-input {
+  padding: 0 10px;
+}
+
+#assignment-grades li .grade-input {
+  width: 50px;
+}
+
+#assignment-grade li button {
+  padding: 5px 10px;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#grades-message {
+  text-align: center;
+  color: #d2dadd;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  border: 1px solid #d2dadd;
+  border-radius: 10px;
+  width: 30%;
+  max-width: 300px;
+  margin: auto;
+  margin-top: 20px;
+  display: none;
+}
+
+#grades-message.succes {
+  color: #35832b;
+  border-color: #35832b;
+}
+
+#grades-message.error {
+  color: #bd0808;
+  border-color: #bd0808;
+}
+
+#save-grades-button {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  width: 30%;
+  padding: 6px;
+  border-radius: 10px;
+  background-color: #35832b;
+  border: 1px solid #d2dadd;
+  color: #d2dadd;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+}
+
+#save-grades-button:hover {
+  background-color: #23551c;
+}
+
+#save-grades-button:active {
+  background-color: #1a3316;
+}
+
+#grades-list-per-class {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #d2dadd;
+}
+
+#grades-list-per-class ul {
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  max-width: 800px;
+}
+
+#grades-list-per-class li {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto auto auto;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #d2dadd;
+  background-color: #23551c;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  width: 200%;
+}
+
+#grades-list-per-class li .assgiment,
+#grades-list-per-class li .grade {
+  padding: 0 10px;
+}
+
+#final-grade {
+  text-align: center;
+  color: #d2dadd;
+  background-color: #23551c;
+  border: 1px solid #d2dadd;
+}
+
+.show-statistics {
+  padding: 5px 10px;
+  background-color: #35832b;
+  color: #d2dadd;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.show-statistics:hover {
+  background-color: #13360f;
+}
+
+.show-statistics:active {
+  background-color: #1a3316;
+}
+
+.statistics {
+  display: none;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #d2dadd;
+  background-color: #23551c;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  width: 200%;
+}
+
+.statistics p {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#grade-weights {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #d2dadd;
+}
+
+#weights-list-per-class {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #d2dadd;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  max-width: 800px;
+}
+
+#weights-list-per-class li {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto auto auto;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #d2dadd;
+  background-color: #23551c;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  width: 60%;
+}
+
+.statistics-class {
+  display: none;
 }
 
 @media (max-width: 1400px) {

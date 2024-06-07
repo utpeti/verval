@@ -1,6 +1,4 @@
 import { User } from './schemas.js';
-import * as dbClass from './classes.js';
-
 // Fuggvenyek a userekhez kapcsolodo adatbazis muveletekhez
 
 // Egy user lekerese
@@ -37,7 +35,6 @@ export const addClassToUser = async (userID, classID) => {
     if (!user.classes.includes(classID)) {
       user.classes.push(classID);
       await user.save();
-      await dbClass.addUserToClass(classID, userID);
     }
   } catch (error) {
     console.error(`Error adding class to user: ${error.message}`);
@@ -90,4 +87,9 @@ export const deleteInvitationFromUser = async (userID, classID) => {
     user.invitations.pull(classID);
     return user.save();
   });
+};
+
+export const emailExists = async (email) => {
+  const user = await User.findOne({ email });
+  return user !== null;
 };

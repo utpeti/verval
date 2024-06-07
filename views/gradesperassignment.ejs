@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <%- include('partials/head.ejs', { title: classData.name }) %>
+    <body id="class">
+        <%- include('partials/header.ejs', { user: user || {} }) %>
+
+        <%- include('partials/sidenav.ejs', { classData: classData }) %>
+    
+        <div id="classdescription">
+            <h1><%= classData.name %></h1>
+            <h1>Grades</h1>
+        </div>
+
+        <% if (assignmentGradesData.length) { %>
+            <div id="assignment-grades">
+                <ul>
+                    <% assignmentGradesData.forEach(assignmentGrade => { %>
+                        <li class="u-<%= assignmentGrade.studentID %>" id="assignment-grade-<%= assignmentGrade.assignmentID %>">
+                            <span class="name" id="<%= assignmentGrade.studentID %>"><%= assignmentGrade.studentName %></h2>
+                            <span class="grade">Grade: <%= assignmentGrade.grade %></p>
+                            <span class="grade-input">New grade:
+                                <input type="text" id="grade-input-<%= assignmentGrade.assignmentID %>" value="<%= assignmentGrade.grade %>">
+                            </span>
+                        </li>
+                    <% }) %>
+                </ul>
+            </div>
+
+            <button id="save-grades-button" onclick="saveGrades()">Save grades</button>
+            
+            <div id="grades-message">
+                <p>Grades saved successfully!</p>
+            </div>
+
+        <% } %>
+  </body>
+</html>

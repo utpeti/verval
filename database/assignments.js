@@ -1,5 +1,6 @@
 import { Assignment, Class } from './schemas.js';
 import { deleteFile } from '../utils/files.js';
+import * as dbGrade from './grades.js';
 
 // Fuggvenyek az assignmentekhez kapcsolodo adatbazis muveletekhez
 
@@ -11,10 +12,12 @@ export const createAssignment = (classID, assignmentData, fileName) => {
   const newAssignment = new Assignment({
     class: classID,
     name: assignmentData.name,
+    weight: assignmentData.weight,
     description: assignmentData.description,
     duedate: assignmentData.deadline,
     descriptionFile: fileName,
   });
+  dbGrade.createGradesForAssignment(newAssignment._id, classID);
   return newAssignment.save();
 };
 
@@ -24,6 +27,7 @@ export const deleteAssignment = async (assignmentID) => {
     deleteFile(assignment.descriptionFile);
   });
   await Class.updateMany({}, { $pull: { assignments: assignmentID } });
+  await dbGrade.deleteGradesOfAssignment(assignmentID);
   await Assignment.findByIdAndDelete(assignmentID);
 };
 

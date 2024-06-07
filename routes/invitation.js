@@ -6,7 +6,7 @@ import { invitationValidation } from '../validations/signupValidation.js';
 
 const router = express.Router();
 
-router.get('/invitedsignup', (req, res) => {
+router.get('/invitedsignup/', (req, res) => {
   try {
     res.render('invitedsignup', { error: null, signInToken: req.query.token });
   } catch (err) {

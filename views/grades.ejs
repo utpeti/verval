@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <%- include('partials/head.ejs', { title: classData.name }) %>
+    <body id="class">
+        <%- include('partials/header.ejs', { user: user || {} }) %>
+
+        <%- include('partials/sidenav.ejs', { classData: classData }) %>
+    
+        <div id="classdescription">
+            <h1><%= classData.name %></h1>
+            <h1>Grades</h1>
+
+            <div id="grades">
+                <% if (gradesData.length === 0) { %>
+                    <p>No grades available</p>
+                <% } else { %>
+                    <ul id="grades-list-per-class">
+                        <% finalData.forEach((final) => { %>
+                            <% if (final.grade !== null) { %>
+                                <li>
+                                    <span class="assignment"><%= final.assignment %></span>
+                                    <span class="grade">Grade: <%= final.grade %></span>
+                                    <button id="<%= final.assignmentID %>" class="show-statistics" onclick="showStatistics('<%= final.assignmentID %>')">Show statistics</button>
+                                </li>
+                                <div class="statistics" id="statistics-<%= final.assignmentID %>">
+                                    <p>Mean: <%= final.mean %> Min: <%= final.min %> Max: <%= final.max %></p>
+                                </div>
+                            <% } %>
+                        <% }) %>
+                    </ul>
+                <% } %>
+            </div>
+
+            <div id="grade-weights">
+                <h2>Grade Weights</h2>
+                <% if (finalData.length === 0) { %>
+                    <p>No grade weights available</p>
+                <% } else { %>
+                    <ul id="weights-list-per-class">
+                        <% finalData.forEach((final) => { %>
+                            <li>
+                                <span class="assignment"><%= final.assignment %></span>
+                                <span class="weight"><%= final.weight %>%</span>
+                            </li>
+                        <% }) %>
+                    </ul>
+                <% } %>
+            </div>
+
+            <div id="final-grade">
+                <h2>Final Grade: <%= finalGrade %></h2>
+            </div>
+
+            <div id="error">
+                <p>Error Message</p>
+            </div>
+            
+        </div>
+  </body>
+</html>

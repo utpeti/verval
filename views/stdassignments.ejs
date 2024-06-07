@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <%- include('partials/head.ejs', { title: 'Grades' }) %>
+    <body>
+        <%- include('partials/header.ejs', { user: user || {} }) %>
+        
+        <div id="assignments-std">
+            <h1>Assignments</h1>
+            <% if (gradesData.length === 0) { %>
+                <p>No assignment available</p>
+            <% } else { %>
+                <ul id="assignment-list">
+                    <% finalData.forEach((final) => { %>
+                        <% if (final.grade === null) { %>
+                            <li>
+                                <span class="class"><%= final.class %></span>
+                                <span class="assignment"><%= final.assignment %></span>
+                                <span class="deadline"><%= final.deadline %></span>
+                            </li>
+                        <% } %>
+                    <% }) %>
+                </ul>
+            <% } %>
+        </div>
+    </body>
+</html>

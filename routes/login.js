@@ -53,6 +53,10 @@ router.post('/signup', express.urlencoded({ extended: true }), async (req, res) 
       res.status(400).render('signup', { error: validationResult });
       return;
     }
+    if (await dbUser.emailExists(email)) {
+      res.status(400).render('signup', { error: 'Email already in use' });
+      return;
+    }
     const hashedSaltedPassword = await bcrypt.hashSync(password, 10);
     const newUser = {
       name,

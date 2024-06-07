@@ -271,6 +271,7 @@ function inviteUser(inviteUserID) {
   });
 }
 
+// tantargy meghivas elfogadasa (projekt)
 async function acceptInvitation(acceptInvitationID) {
   try {
     const res = await fetch('/acceptinvitation', {
@@ -340,6 +341,116 @@ async function declineInvitation(declineInvitationID) {
   }
 }
 
+// kliens oldali jegyek mentese (projekt)
+async function saveGrades() {
+  const saveGradesButton = document.getElementById('save-grades-button');
+  saveGradesButton.disabled = true;
+
+  try {
+    const assignmentGrades = [];
+    const assignmentGradeElements = document.querySelectorAll('#assignment-grades li');
+    assignmentGradeElements.forEach((element) => {
+      const studentID = element.querySelector('.name').id;
+      const assignmentID = element.id.replace('assignment-grade-', '');
+      const gradeInput = element.querySelector('input[type="text"]');
+      const grade = gradeInput.value.trim();
+      assignmentGrades.push({ studentID, assignmentID, grade });
+    });
+
+    const response = await fetch('/savegrades', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(assignmentGrades),
+    });
+
+    const message = document.getElementById('grades-message');
+    if (response.status === 200) {
+      const result = await response.json();
+      message.textContent = result.message;
+      message.className = 'success';
+      message.style.display = 'block';
+
+      result.updatedGrades.forEach((updatedGrade) => {
+        const gradeElement = document.querySelector(`
+        #assignment-grade-${updatedGrade.assignment} .u-${updatedGrade.user}`);
+        if (gradeElement) {
+          const gradeInput = gradeElement.closest('li').querySelector('input[type="text"]');
+          gradeInput.value = updatedGrade.grade;
+        }
+      });
+    } else {
+      const errorText = await response.text();
+      message.textContent = `Error saving grades: ${errorText}`;
+      message.className = 'error';
+      message.style.display = 'block';
+    }
+  } catch (error) {
+    const message = document.getElementById('grades-message');
+    message.textContent = 'Error saving grades';
+    message.className = 'error';
+    message.style.display = 'block';
+    console.error(error);
+  } finally {
+    saveGradesButton.disabled = false;
+    setTimeout(() => {
+      const message = document.getElementById('grades-message');
+      message.style.display = 'none';
+    }, 3000);
+  }
+}
+
+// kliens oldali assignmenthez tartozo jegyek statiszikajanak megjelenitese (projekt)
+// eslint-disable-next-line no-unused-vars
+async function showStatistics(assignmentID) {
+  try {
+    const res = await fetch(`/assignment/${assignmentID}/statistics`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    const responseData = await res.json();
+    if (res.status === 200) {
+      const statisticsElement = document.querySelector(`#statistics-${assignmentID}`);
+      statisticsElement.textContent = `Mean: ${responseData.mean}, Min: ${responseData.min}, Max: ${responseData.max}`;
+      statisticsElement.style.display = 'block';
+
+      const showStatisticsButton = document.getElementById(`${assignmentID}`);
+      showStatisticsButton.textContent = 'Hide statistics';
+      showStatisticsButton.setAttribute('onclick', `hideStatistics('${assignmentID}')`);
+    } else {
+      alert(responseData.message);
+    }
+  } catch (error) {
+    const errorMessage = document.getElementById('error');
+    errorMessage.getElementsByTagName('p')[0].textContent = 'Error showing statistics';
+    errorMessage.style.display = 'block';
+    setTimeout(() => {
+      errorMessage.style.display = 'none';
+    }, 3000);
+    console.error(error);
+  }
+}
+
+// kliens oldali assignmenthez tartozo jegyek statiszikajanak elrejtse (projekt)
+// eslint-disable-next-line no-unused-vars
+function hideStatistics(assignmentID) {
+  try {
+    const statisticsElement = document.querySelector(`#statistics-${assignmentID}`);
+    statisticsElement.style.display = 'none';
+
+    const showStatisticsButton = document.getElementById(`${assignmentID}`);
+    showStatisticsButton.textContent = 'Show statistics';
+    showStatisticsButton.setAttribute('onclick', `showStatistics('${assignmentID}')`);
+  } catch (error) {
+    const errorMessage = document.getElementById('error');
+    errorMessage.getElementsByTagName('p')[0].textContent = 'Error hiding statistics';
+    errorMessage.style.display = 'block';
+    setTimeout(() => {
+      errorMessage.style.display = 'none';
+    }, 3000);
+    console.error(error);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const deleteClassButtons = document.querySelectorAll('[data-class-id]');
   deleteClassButtons.forEach((button) => {
@@ -402,5 +513,10 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', (event) => {
       declineInvitation(event.target.dataset.declineInvitationId);
     });
+  });
+
+  const saveGradesButton = document.getElementById('save-grades-button');
+  saveGradesButton.addEventListener('click', (event) => {
+    saveGrades(event);
   });
 });

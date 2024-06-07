@@ -4,11 +4,7 @@
     <body id="class">
         <%- include('partials/header.ejs', { user: user || {} }) %>
 
-        <div class="sidenav">
-            <h1>Menu</h1>
-            <a href="/class/<%= encodeURIComponent(classData._id) %>">Homepage</a>
-            <a href="/class/<%= encodeURIComponent(classData._id) %>/assignments">Assignments</a>
-        </div>
+        <%- include('partials/sidenav.ejs', { classData: classData }) %>
     
         <div id="classdescription">
             <h1><%= classData.name %></h1>
@@ -25,7 +21,8 @@
                             <p><%= assignment.description %></p>
                             <p>Due: <%= assignment.duedate %></p>
                             <a href="/class/<%= classData._id %>/assignment/<%= assignment._id %>/uploaded-files/<%= assignment.descriptionFile %>">Open detailed description</a>
-                            <% if (user && user._id == classData.owner && user.role === 'teacher') { %>
+                            <% if (user.role === 'teacher') { %>
+                                <a href="/class/<%= classData._id %>/assignment/<%= assignment._id %>/grade">Grade assignment</a>
                                 <button id="delete-assignment-button" onclick="deleteAssignment('<%= assignment._id %>')">Delete assignment</button>
                             <% } %>
                         </li>
@@ -39,8 +36,5 @@
         <% if (user && user._id == classData.owner && user.role === 'teacher') { %>
             <a id="add-assignment-button" href="/class/<%= encodeURIComponent(classData._id) %>/addassignment">Add assignment</a>
         <% } %>
-
-        <%- include('partials/footer.ejs') %>
-    
   </body>
 </html>

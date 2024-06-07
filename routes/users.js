@@ -1,6 +1,7 @@
 import express from 'express';
 import * as dbUser from '../database/users.js';
 import * as dbClass from '../database/classes.js';
+import * as dbGrades from '../database/grades.js';
 import { authorize } from '../middleware/authorization.js';
 
 const router = express.Router();
@@ -42,8 +43,21 @@ router.delete('/deleteuser', express.json(), authorize('teacher'), (req, res) =>
 });
 
 // user role-janak modositasa
-router.post('/edituser', express.json(), authorize('teacher'), (req, res) => {
+router.post('/edituser', express.json(), authorize('teacher'), async (req, res) => {
   const { userID, role } = req.body;
+  const user = await dbUser.getUser(userID);
+  const prevRole = user.role;
+  if (prevRole === 'student' && role === 'teacher') {
+    await dbGrades.deleteGradesOfStudent(userID);
+  }
+  if (prevRole === 'teacher' && role === 'student') {
+    const userWithClasses = await dbUser.getClassesOfUser(userID);
+    const userClasses = userWithClasses.classes;
+    userClasses.forEach(async (classID) => {
+      await dbClass.deleteUserFromClass(classID, userID);
+      await dbUser.deleteClassFromUser(userID, classID);
+    });
+  }
   dbUser
     .editUser(userID, role)
     .then(() => res.status(200).send({ message: 'User edited' }))

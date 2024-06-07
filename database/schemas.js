@@ -13,6 +13,10 @@ const assignmentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  weight: {
+    type: Number,
+    required: true,
+  },
   description: {
     type: String,
     required: true,
@@ -38,13 +42,11 @@ const classSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  owner: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: true,
-    },
-  ],
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
   users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   assignments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Assignment' }],
 });
@@ -76,6 +78,7 @@ const userSchema = new mongoose.Schema({
 });
 export const User = mongoose.model('User', userSchema);
 
+// meghivok (projekt)
 const invitationSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -89,3 +92,26 @@ const invitationSchema = new mongoose.Schema({
   },
 });
 export const Invitation = mongoose.model('Invitation', invitationSchema);
+
+// jegyek (projekt)
+const gradesSchema = new mongoose.Schema({
+  class: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Class',
+    required: true,
+  },
+  assignment: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Assignment',
+    required: true,
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
+  grade: {
+    type: Number,
+  },
+});
+export const Grades = mongoose.model('Grades', gradesSchema);

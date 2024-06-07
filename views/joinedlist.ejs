@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <%- include('partials/head.ejs', { title: classData.name }) %>
+    <body id="class">
+        <%- include('partials/header.ejs', { user: user || {} }) %>
+        
+        <%- include('partials/sidenav.ejs', { classData: classData }) %>
+        
+        <% if (users.length) { %>
+            <h1>Joined Users (<%= users.length %>)</h1>
+        <% } else { %>
+            <h1>Joined Users</h1>
+        <% } %>
+
+        <ul id="users-list-of-class">
+            <% if (users.length) { %>
+                <% users.forEach((user) => { %>
+                    <li><%= user.name %></li>
+                <% }); %>
+            <% } else { %>
+                <h3>No joined users yet!</h3>
+            <% } %>
+        </ul>
+  </body>
+</html>
