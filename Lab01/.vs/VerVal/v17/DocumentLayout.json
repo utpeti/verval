@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\diboti\\Desktop\\temp\\Verval\\Lab01\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2872B081-A50B-47E7-B172-24C00459FD94}|DatesAndStuff\\test\\DatesAndStuff.Tests\\DatesAndStuff.Tests.csproj|c:\\users\\diboti\\desktop\\temp\\verval\\lab01\\datesandstuff\\test\\datesandstuff.tests\\simulationtimetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2872B081-A50B-47E7-B172-24C00459FD94}|DatesAndStuff\\test\\DatesAndStuff.Tests\\DatesAndStuff.Tests.csproj|solutionrelative:datesandstuff\\test\\datesandstuff.tests\\simulationtimetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2872B081-A50B-47E7-B172-24C00459FD94}|DatesAndStuff\\test\\DatesAndStuff.Tests\\DatesAndStuff.Tests.csproj|c:\\users\\diboti\\desktop\\temp\\verval\\lab01\\datesandstuff\\test\\datesandstuff.tests\\persontests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2872B081-A50B-47E7-B172-24C00459FD94}|DatesAndStuff\\test\\DatesAndStuff.Tests\\DatesAndStuff.Tests.csproj|solutionrelative:datesandstuff\\test\\datesandstuff.tests\\persontests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B0B8ACE-6E87-4FE3-8873-F186C5FF66E8}|DatesAndStuff\\src\\DatesAndStuff\\DatesAndStuff.csproj|c:\\users\\diboti\\desktop\\temp\\verval\\lab01\\datesandstuff\\src\\datesandstuff\\simulationtime.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B0B8ACE-6E87-4FE3-8873-F186C5FF66E8}|DatesAndStuff\\src\\DatesAndStuff\\DatesAndStuff.csproj|solutionrelative:datesandstuff\\src\\datesandstuff\\simulationtime.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B0B8ACE-6E87-4FE3-8873-F186C5FF66E8}|DatesAndStuff\\src\\DatesAndStuff\\DatesAndStuff.csproj|c:\\users\\diboti\\desktop\\temp\\verval\\lab01\\datesandstuff\\src\\datesandstuff\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B0B8ACE-6E87-4FE3-8873-F186C5FF66E8}|DatesAndStuff\\src\\DatesAndStuff\\DatesAndStuff.csproj|solutionrelative:datesandstuff\\src\\datesandstuff\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SimulationTime.cs",
+              "DocumentMoniker": "C:\\Users\\diboti\\Desktop\\temp\\Verval\\Lab01\\DatesAndStuff\\src\\DatesAndStuff\\SimulationTime.cs",
+              "RelativeDocumentMoniker": "DatesAndStuff\\src\\DatesAndStuff\\SimulationTime.cs",
+              "ToolTip": "C:\\Users\\diboti\\Desktop\\temp\\Verval\\Lab01\\DatesAndStuff\\src\\DatesAndStuff\\SimulationTime.cs",
+              "RelativeToolTip": "DatesAndStuff\\src\\DatesAndStuff\\SimulationTime.cs",
+              "ViewState": "AQIAAEgAAAAAAAAAAAAMwMMAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-26T16:24:30.108Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SimulationTimeTests.cs",
+              "DocumentMoniker": "C:\\Users\\diboti\\Desktop\\temp\\Verval\\Lab01\\DatesAndStuff\\test\\DatesAndStuff.Tests\\SimulationTimeTests.cs",
+              "RelativeDocumentMoniker": "DatesAndStuff\\test\\DatesAndStuff.Tests\\SimulationTimeTests.cs",
+              "ToolTip": "C:\\Users\\diboti\\Desktop\\temp\\Verval\\Lab01\\DatesAndStuff\\test\\DatesAndStuff.Tests\\SimulationTimeTests.cs",
+              "RelativeToolTip": "DatesAndStuff\\test\\DatesAndStuff.Tests\\SimulationTimeTests.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAcwDEAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-26T16:23:36.331Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PersonTests.cs",
+              "DocumentMoniker": "C:\\Users\\diboti\\Desktop\\temp\\Verval\\Lab01\\DatesAndStuff\\test\\DatesAndStuff.Tests\\PersonTests.cs",
+              "RelativeDocumentMoniker": "DatesAndStuff\\test\\DatesAndStuff.Tests\\PersonTests.cs",
+              "ToolTip": "C:\\Users\\diboti\\Desktop\\temp\\Verval\\Lab01\\DatesAndStuff\\test\\DatesAndStuff.Tests\\PersonTests.cs",
+              "RelativeToolTip": "DatesAndStuff\\test\\DatesAndStuff.Tests\\PersonTests.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAIAwwC8AAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-26T16:20:35.803Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Person.cs",
+              "DocumentMoniker": "C:\\Users\\diboti\\Desktop\\temp\\Verval\\Lab01\\DatesAndStuff\\src\\DatesAndStuff\\Person.cs",
+              "RelativeDocumentMoniker": "DatesAndStuff\\src\\DatesAndStuff\\Person.cs",
+              "ToolTip": "C:\\Users\\diboti\\Desktop\\temp\\Verval\\Lab01\\DatesAndStuff\\src\\DatesAndStuff\\Person.cs",
+              "RelativeToolTip": "DatesAndStuff\\src\\DatesAndStuff\\Person.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-26T16:20:29.976Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
