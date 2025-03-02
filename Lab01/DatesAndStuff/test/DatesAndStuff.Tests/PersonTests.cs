@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using NUnit.Framework.Internal;
 
 namespace DatesAndStuff.Tests;
 
@@ -59,30 +60,60 @@ public class PersonTests
         }
     }
 
-    private class SalaryTests
+    private class SalaryTests : PersonTests
     {
         [Test]
         public void IncreaseSalary_PositiveIncrease_ShouldIncrease()
         {
-            throw new NotImplementedException();
+            //Arrange
+            double increase = 10;
+            double expected = sut.Salary * (1 + increase / 100);
+
+            //Act
+            sut.IncreaseSalary(increase);
+
+            //Assert
+            Assert.That(sut.Salary, Is.EqualTo(expected));
         }
 
         [Test]
         public void IncreaseSalary_ZeroPercentIncrease_ShouldNotChange()
         {
-            throw new NotImplementedException();
+            //Arrange
+            double increase = 0;
+            double expected = sut.Salary;
+
+            //Act
+            sut.IncreaseSalary(increase);
+
+            //Assert
+            Assert.That(sut.Salary, Is.EqualTo(expected));
         }
 
         [Test]
         public void IncreaseSalary_NegativeIncrease_ShouldDecrease()
         {
-            throw new NotImplementedException();
+            //Arrange
+            double increase = -9;
+            double expected = sut.Salary * (1 + increase / 100);
+
+            //Act
+            sut.IncreaseSalary(increase);
+
+            //Assert
+            Assert.AreEqual(expected, sut.Salary);
         }
 
         [Test]
         public void IncreaseSalary_SmallerThanMinusTenPerc_ShouldFail()
         {
-            throw new NotImplementedException();
+            //Arrange
+            double increase = -11;
+
+            //Act
+
+            //Assert
+            Assert.Throws<ArgumentOutOfRangeException>(() => sut.IncreaseSalary(increase));
         }
     }
 }
