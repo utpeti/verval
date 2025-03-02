@@ -1,3 +1,5 @@
+using FluentAssertions;
+
 namespace DatesAndStuff.Tests
 {
     public class SimulationTimeTests
@@ -69,17 +71,14 @@ namespace DatesAndStuff.Tests
             // min
 
             [Test]
-            public void Operator_Equals_ReturnTrueForSameTimes()
+            public void Operator_Equals_ShouldReturnTrueForSameTimes()
             {
-                //Arrange
+                // Arrange
                 var sut2 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 50));
                 var sut3 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 50));
 
-                //Act
-                var result = sut2 == sut3;
-
-                //Assert
-                Assert.IsTrue(result);
+                // Act & Assert
+                sut2.Should().Be(sut3);
             }
 
             [Test]
@@ -89,11 +88,8 @@ namespace DatesAndStuff.Tests
                 var sut2 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 50));
                 var sut3 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 51));
 
-                //Act
-                var result = sut2 != sut3;
-
-                //Assert
-                Assert.IsTrue(result);
+                //Act & Assert
+                sut2.Should().NotBe(sut3);
             }
 
             [Test]
@@ -103,11 +99,8 @@ namespace DatesAndStuff.Tests
                 var sut2 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 50));
                 var sut3 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 51));
 
-                //Act
-                var result = sut2 < sut3;
-
-                //Assert
-                Assert.IsTrue(result);
+                //Act & Assert
+                sut.ToAbsoluteDateTime().Should().BeBefore(sut3.ToAbsoluteDateTime());
             }
 
             [Test]
@@ -117,25 +110,19 @@ namespace DatesAndStuff.Tests
                 var sut2 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 50));
                 var sut3 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 51));
 
-                //Act
-                var result = sut3 > sut2;
-
-                //Assert
-                Assert.IsTrue(result);
+                //Act & Assert
+                sut3.ToAbsoluteDateTime().Should().BeAfter(sut2.ToAbsoluteDateTime());
             }
 
             [Test]
-            public void Operator_LessThanOrEqual_ReturnTrueForEarlierTime()
+            public void Operator_LessThanOrEqual_ShouldReturnTrueForEarlierTime()
             {
-                //Arrange
+                // Arrange
                 var sut2 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 50));
                 var sut3 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 51));
 
-                //Act
-                var result = sut2 <= sut3;
-
-                //Assert
-                Assert.IsTrue(result);
+                // Act & Assert
+                sut2.Should().BeLessThanOrEqualTo(sut3);
             }
 
             [Test]
@@ -145,11 +132,8 @@ namespace DatesAndStuff.Tests
                 var sut2 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 50));
                 var sut3 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 50));
 
-                //Act
-                var result = sut2 <= sut3;
-
-                //Assert
-                Assert.That(result);
+                //Act & Assert
+                sut2.Should().BeLessThanOrEqualTo(sut3);
             }
         }
 
@@ -177,7 +161,6 @@ namespace DatesAndStuff.Tests
 
                 // Assert
                 var expectedDateTime = baseDate + ts;
-                Assert.AreEqual(expectedDateTime, result.ToAbsoluteDateTime());
             }
 
             [Test]
