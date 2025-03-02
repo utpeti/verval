@@ -24,51 +24,76 @@ namespace DatesAndStuff.Tests
         {
         }
 
-        [Test]
-        // Default time is not current time.
-        public void SimulationTime_Construction()
+        private class ConstructorTests
         {
-            throw new NotImplementedException();
+            [Test]
+            // Default time is not current time.
+            // Given_When_Then pattern ...
+            public void DateTime_ConstructingWithDateTime_CorrectTime()
+            {
+                throw new NotImplementedException();
+            }
+
+            [Test]
+            public void YearMonthDay_ConstructingWithYearMonthDay_CorrectTime()
+            {
+                throw new NotImplementedException();
+            }
+
+            [Test]
+            public void YearMonthDayHourMinuteSecond_ConstructingWithYearMonthDayHourMinuteSecond_CorrectTime()
+            {
+                throw new NotImplementedException();
+            }
+
+            [Test]
+            public void LogicalTickString_ConstructingWithLogicalTickString_CorrectTime()
+            {
+                throw new NotImplementedException();
+            }
         }
 
-        // equal
-        // not equal
-        // <
-        // >
-        // <= different
-        // >= different 
-        // <= same
-        // >= same
-        // max
-        // min
-        [Test]
-        public void Constructor_DefaultTime_NotBeCurrentTime()
+        private class ComparisonTests
         {
-            throw new NotImplementedException();
-        }
+            // equal
+            // not equal
+            // <
+            // >
+            // <= different
+            // >= different 
+            // <= same
+            // >= same
+            // max
+            // min
+            [Test]
+            public void Constructor_DefaultTime_NotBeCurrentTime()
+            {
+                throw new NotImplementedException();
+            }
 
-        [Test]
-        public void Operator_Equals_ReturnTrueForSameTimes()
-        {
-            throw new NotImplementedException();
-        }
+            [Test]
+            public void Operator_Equals_ReturnTrueForSameTimes()
+            {
+                throw new NotImplementedException();
+            }
 
-        [Test]
-        public void Operator_NotEquals_ReturnTrueForDifferentTimes()
-        {
-            throw new NotImplementedException();
-        }
+            [Test]
+            public void Operator_NotEquals_ReturnTrueForDifferentTimes()
+            {
+                throw new NotImplementedException();
+            }
 
-        [Test]
-        public void Operator_LessThan_ReturnTrueForEarlierTime()
-        {
-            throw new NotImplementedException();
-        }
+            [Test]
+            public void Operator_LessThan_ReturnTrueForEarlierTime()
+            {
+                throw new NotImplementedException();
+            }
 
-        [Test]
-        public void Operator_GreaterThan_ReturnTrueForLaterTime()
-        {
-            throw new NotImplementedException();
+            [Test]
+            public void Operator_GreaterThan_ReturnTrueForLaterTime()
+            {
+                throw new NotImplementedException();
+            }
         }
 
         private class TimeSpanArithmeticTests
@@ -108,54 +133,59 @@ namespace DatesAndStuff.Tests
             }
         }
 
-
-        [Test]
-        // simulation difference timespane and datetimetimespan is the same
-        public void SubtractSimulationTime_ReturnCorrectDifference()
+        private class RepresentationTests
         {
-            throw new NotImplementedException();
+            [Test]
+            // millisecond representation works
+            public void MillisecondRepresentation_RepresentTimeInMilliseconds_ReturnCorrectValue()
+            {
+                throw new NotImplementedException();
+            }
+
+            [Test]
+            // check string representation given by ToString
+            public void StringRepresentation_ToString_ReturnCorrectString()
+            {
+                throw new NotImplementedException();
+            }
         }
 
-        [Test]
-        // millisecond representation works
-        public void MillisecondRepresentation_WorkCorrectly()
+        private class CalculationTests
         {
-            throw new NotImplementedException();
-        }
+            [Test]
+            // simulation difference timespane and datetimetimespan is the same
+            public void SimulationTimeSubstraction_SubtractSimulationTime_ReturnCorrectDifference()
+            {
+                throw new NotImplementedException();
+            }
 
-        [Test]
-        // next millisec calculation works
-        public void NextMillisec_CalculateCorrectly()
-        {
-            throw new NotImplementedException();
-        }
+            [Test]
+            // next millisec calculation works
+            public void NextMillisecCalculation_CalculateNextMillisec_ReturnCorrectValue()
+            {
+                throw new NotImplementedException();
+            }
 
-        [Test]
-        // creat a SimulationTime from a DateTime, add the same milliseconds to both and check if they are still equal
-        public void AddMilliseconds_AddingSameValue_RemainEqual()
-        {
-            throw new NotImplementedException();
-        }
+            [Test]
+            // creat a SimulationTime from a DateTime, add the same milliseconds to both and check if they are still equal
+            public void AddMilliseconds_AddingSameValue_RemainEqual()
+            {
+                throw new NotImplementedException();
+            }
 
-        [Test]
-        // the same as before just with seconds
-        public void AddSeconds_AddingSameValue_RemainEqual()
-        {
-            throw new NotImplementedException();
-        }
+            [Test]
+            // the same as before just with seconds
+            public void AddSeconds_AddingSameValue_RemainEqual()
+            {
+                throw new NotImplementedException();
+            }
 
-        [Test]
-        // same as before just with timespan
-        public void AddTimeSpan_AddingSameValue_RemainEqual()
-        {
-            throw new NotImplementedException();
-        }
-
-        [Test]
-        // check string representation given by ToString
-        public void ToString_ReturnCorrectStringRepresentation()
-        {
-            throw new NotImplementedException();
+            [Test]
+            // same as before just with timespan
+            public void AddTimeSpan_AddingSameValue_RemainEqual()
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }
