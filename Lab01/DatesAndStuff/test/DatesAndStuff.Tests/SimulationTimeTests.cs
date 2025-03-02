@@ -65,11 +65,6 @@ namespace DatesAndStuff.Tests
             // >= same
             // max
             // min
-            [Test]
-            public void Constructor_DefaultTime_NotBeCurrentTime()
-            {
-                throw new NotImplementedException();
-            }
 
             [Test]
             public void Operator_Equals_ReturnTrueForSameTimes()
