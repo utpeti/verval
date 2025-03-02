@@ -99,13 +99,57 @@ namespace DatesAndStuff.Tests
             [Test]
             public void Operator_LessThan_ReturnTrueForEarlierTime()
             {
-                throw new NotImplementedException();
+                //Arrange
+                var sut2 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 50));
+                var sut3 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 51));
+
+                //Act
+                var result = sut2 < sut3;
+
+                //Assert
+                Assert.IsTrue(result);
             }
 
             [Test]
             public void Operator_GreaterThan_ReturnTrueForLaterTime()
             {
-                throw new NotImplementedException();
+                //Arrange
+                var sut2 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 50));
+                var sut3 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 51));
+
+                //Act
+                var result = sut3 > sut2;
+
+                //Assert
+                Assert.IsTrue(result);
+            }
+
+            [Test]
+            public void Operator_LessThanOrEqual_ReturnTrueForEarlierTime()
+            {
+                //Arrange
+                var sut2 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 50));
+                var sut3 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 51));
+
+                //Act
+                var result = sut2 <= sut3;
+
+                //Assert
+                Assert.IsTrue(result);
+            }
+
+            [Test]
+            public void Operator_LessThanOrEqual_ReturnTrueForSameTime()
+            {
+                //Arrange
+                var sut2 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 50));
+                var sut3 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 50));
+
+                //Act
+                var result = sut2 <= sut3;
+
+                //Assert
+                Assert.That(result);
             }
         }
 
