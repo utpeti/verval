@@ -31,7 +31,6 @@ namespace DatesAndStuff.Tests
             throw new NotImplementedException();
         }
 
-        [Test]
         // equal
         // not equal
         // <
@@ -42,7 +41,32 @@ namespace DatesAndStuff.Tests
         // >= same
         // max
         // min
-        public void SimulationTime_Op()
+        [Test]
+        public void Constructor_DefaultTime_NotBeCurrentTime()
+        {
+            throw new NotImplementedException();
+        }
+
+        [Test]
+        public void Operator_Equals_ReturnTrueForSameTimes()
+        {
+            throw new NotImplementedException();
+        }
+
+        [Test]
+        public void Operator_NotEquals_ReturnTrueForDifferentTimes()
+        {
+            throw new NotImplementedException();
+        }
+
+        [Test]
+        public void Operator_LessThan_ReturnTrueForEarlierTime()
+        {
+            throw new NotImplementedException();
+        }
+
+        [Test]
+        public void Operator_GreaterThan_ReturnTrueForLaterTime()
         {
             throw new NotImplementedException();
         }
@@ -55,7 +79,7 @@ namespace DatesAndStuff.Tests
             // add
             // substract
             // Given_When_Then
-            public void Addition_SimulationTimeIsShifted()
+            public void Addition_AddingTimeSpan_SimulationTimeIsShifted()
             {
                 // UserSignedIn_OrderSent_OrderIsRegistered
                 // DBB, specflow, cucumber, gherkin
@@ -76,7 +100,7 @@ namespace DatesAndStuff.Tests
 
             [Test]
             //Method_Should_Then
-            public void Subtracttion_SimulationTimeShifted()
+            public void Subtraction_SubtractingTimeSpan_SimulationTimeIsShifted()
             {
                 // code kozelibb
                 // RegisterOrder_SignedInUserSendsOrder_OrderIsRegistered
@@ -87,51 +111,49 @@ namespace DatesAndStuff.Tests
 
         [Test]
         // simulation difference timespane and datetimetimespan is the same
-        public void SimulationTime_SubtractSimulationTime()
+        public void SubtractSimulationTime_ReturnCorrectDifference()
         {
             throw new NotImplementedException();
         }
 
         [Test]
         // millisecond representation works
-        public void SimulationTime_1msPerTick()
+        public void MillisecondRepresentation_WorkCorrectly()
         {
-            //var t1 = SimulationTime.MinValue.AddMilliseconds(10);
             throw new NotImplementedException();
         }
 
         [Test]
         // next millisec calculation works
-        public void SimulationTime_NextMillisec()
+        public void NextMillisec_CalculateCorrectly()
         {
-            //Assert.AreEqual(t1.TotalMilliseconds + 1, t1.NextMillisec.TotalMilliseconds);
             throw new NotImplementedException();
         }
 
         [Test]
         // creat a SimulationTime from a DateTime, add the same milliseconds to both and check if they are still equal
-        public void SimulationTime_AddMilliSeconds()
+        public void AddMilliseconds_AddingSameValue_RemainEqual()
         {
             throw new NotImplementedException();
         }
 
         [Test]
         // the same as before just with seconds
-        public void SimulationTime_AddSeconds()
+        public void AddSeconds_AddingSameValue_RemainEqual()
         {
             throw new NotImplementedException();
         }
 
         [Test]
         // same as before just with timespan
-        public void SimulationTime_AddTimeSpan()
+        public void AddTimeSpan_AddingSameValue_RemainEqual()
         {
             throw new NotImplementedException();
         }
 
         [Test]
         // check string representation given by ToString
-        public void SimulationTime_ToString()
+        public void ToString_ReturnCorrectStringRepresentation()
         {
             throw new NotImplementedException();
         }

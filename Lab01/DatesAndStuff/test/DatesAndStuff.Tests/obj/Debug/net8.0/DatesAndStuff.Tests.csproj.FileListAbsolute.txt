@@ -101,3 +101,4 @@ C:\Users\diboti\Desktop\temp\Verval\Lab01\DatesAndStuff\test\DatesAndStuff.Tests
 C:\Users\diboti\Desktop\temp\Verval\Lab01\DatesAndStuff\test\DatesAndStuff.Tests\obj\Debug\net8.0\DatesAndStuff.Tests.pdb
 C:\Users\diboti\Desktop\temp\Verval\Lab01\DatesAndStuff\test\DatesAndStuff.Tests\obj\Debug\net8.0\DatesAndStuff.Tests.genruntimeconfig.cache
 C:\Users\diboti\Desktop\temp\Verval\Lab01\DatesAndStuff\test\DatesAndStuff.Tests\obj\Debug\net8.0\ref\DatesAndStuff.Tests.dll
+C:\Users\diboti\Desktop\temp\Verval\Lab01\DatesAndStuff\test\DatesAndStuff.Tests\obj\Debug\net8.0\DatesAndStuff.Tests.sourcelink.json
