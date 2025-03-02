@@ -1,11 +1,13 @@
 namespace DatesAndStuff.Tests
 {
-    public sealed class SimulationTimeTests
+    public class SimulationTimeTests
     {
+        private SimulationTime sut;
+
         [OneTimeSetUp]
         public void OneTimeSetupStuff()
         {
-            // 
+            this.sut = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 49));
         }
 
         [SetUp]
@@ -53,7 +55,7 @@ namespace DatesAndStuff.Tests
             }
         }
 
-        private class ComparisonTests
+        private class ComparisonTests : SimulationTimeTests
         {
             // equal
             // not equal
@@ -69,13 +71,29 @@ namespace DatesAndStuff.Tests
             [Test]
             public void Operator_Equals_ReturnTrueForSameTimes()
             {
-                throw new NotImplementedException();
+                //Arrange
+                var sut2 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 50));
+                var sut3 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 50));
+
+                //Act
+                var result = sut2 == sut3;
+
+                //Assert
+                Assert.IsTrue(result);
             }
 
             [Test]
             public void Operator_NotEquals_ReturnTrueForDifferentTimes()
             {
-                throw new NotImplementedException();
+                //Arrange
+                var sut2 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 50));
+                var sut3 = new SimulationTime(new DateTime(2024, 4, 23, 9, 4, 51));
+
+                //Act
+                var result = sut2 != sut3;
+
+                //Assert
+                Assert.IsTrue(result);
             }
 
             [Test]
