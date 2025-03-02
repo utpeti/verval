@@ -73,7 +73,7 @@ public class PersonTests
             sut.IncreaseSalary(increase);
 
             //Assert
-            Assert.That(sut.Salary, Is.EqualTo(expected));
+            sut.Salary.Should().Be(expected);
         }
 
         [Test]
@@ -87,7 +87,7 @@ public class PersonTests
             sut.IncreaseSalary(increase);
 
             //Assert
-            Assert.That(sut.Salary, Is.EqualTo(expected));
+            sut.Salary.Should().Be(expected);
         }
 
         [Test]
@@ -101,7 +101,7 @@ public class PersonTests
             sut.IncreaseSalary(increase);
 
             //Assert
-            Assert.AreEqual(expected, sut.Salary);
+            sut.Salary.Should().Be(expected);
         }
 
         [Test]
@@ -113,7 +113,7 @@ public class PersonTests
             //Act
 
             //Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => sut.IncreaseSalary(increase));
+            sut.Invoking(s => s.IncreaseSalary(increase)).Should().Throw<ArgumentOutOfRangeException>();
         }
     }
 }
