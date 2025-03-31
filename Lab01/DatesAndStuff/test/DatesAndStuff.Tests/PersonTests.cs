@@ -63,11 +63,14 @@ public class PersonTests
         Assert.IsTrue(task.IsFaulted);
     }
 
+    // IncreaseSalary_ReasonableValue_ShouldModifySalary test a neve a semi kodban
     [Test]
-    [CustomPersonCreationAutodataAttribute]
-    public void IncreaseSalary_PositiveIncrease_ShouldIncrease(Person sut, double salaryIncreasePercentage)
+    [TestCase(-0.0000001)]
+    [TestCase(1)]
+    public void IncreaseSalary_ValidIncrease_ShouldIncrease(double salaryIncreasePercentage)
     {
         // Arrange
+        var sut = PersonFactory.CreateTestPerson();sdsasd
         double initSalary = sut.Salary;
 
         // Act
@@ -76,6 +79,25 @@ public class PersonTests
         // Assert
         sut.Salary.Should().BeApproximately(initSalary * (100 + salaryIncreasePercentage) / 100, Math.Pow(10, -8), because: "numerical salary calculation might be rounded to conform legal stuff");
     }
+
+    [Test]
+    [TestCase(-0.01)]
+    [TestCase(-1)]
+    public void IncreaseSalary_InvalidIncrease_ShouldNotIncrease(double salaryIncreasePercentage)
+    {
+        // Arrange
+        var sut = PersonFactory.CreateTestPerson();
+        double initSalary = sut.Salary;
+
+
+        // Act
+        sut.IncreaseSalary(salaryIncreasePercentage);
+
+        // Assert
+        sut.Salary.Should().Be(initSalary, because: "Salary should not increase or decrease with zero or negative percentage");
+    }
+
+
 
     [Test]
     public void Constructor_DefaultParams_ShouldBeAbleToEatChocolate()
@@ -104,7 +126,7 @@ public class PersonTests
     [Test]
     public void IncreaseSalary_ZeroPercentIncrease_ShouldNotChange()
     {
-        throw new NotImplementedException();
+            throw new NotImplementedException();
     }
 
     [Test]
