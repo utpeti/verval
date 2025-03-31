@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using AutoFixture;
+using AutoFixture.NUnit3;
+using FluentAssertions;
 
 namespace DatesAndStuff.Tests;
 
@@ -9,7 +11,6 @@ public class PersonTests
     [SetUp]
     public void Setup()
     {
-        this.sut = new Person("Test Pista", 54);
     }
 
     [TearDown]
