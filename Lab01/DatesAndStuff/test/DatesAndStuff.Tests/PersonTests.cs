@@ -23,6 +23,8 @@ public class PersonTests
     public void GotMerried_First_NameShouldChange()
     {
         // Arrange
+        var sut = PersonFactory.CreateTestPerson();
+
         string newName = "Test-Eleso Pista";
         double salaryBeforeMarriage = sut.Salary;
         var beforeChanges = Person.Clone(sut);
@@ -46,6 +48,10 @@ public class PersonTests
     public void GotMerried_Second_ShouldFail()
     {
         // Arrange
+        var fixture = new AutoFixture.Fixture();
+        fixture.Customize<IPaymentService>(c => c.FromFactory(() => new TestPaymentService()));
+
+        var sut = fixture.Create<Person>();
         string newName = "Test-Eleso-Felallo Pista";
         sut.GotMarried("");
 
@@ -58,9 +64,41 @@ public class PersonTests
     }
 
     [Test]
-    public void IncreaseSalary_PositiveIncrease_ShouldIncrease()
+    [CustomPersonCreationAutodataAttribute]
+    public void IncreaseSalary_PositiveIncrease_ShouldIncrease(Person sut, double salaryIncreasePercentage)
     {
-        throw new NotImplementedException();
+        // Arrange
+        double initSalary = sut.Salary;
+
+        // Act
+        sut.IncreaseSalary(salaryIncreasePercentage);
+
+        // Assert
+        sut.Salary.Should().BeApproximately(initSalary * (100 + salaryIncreasePercentage) / 100, Math.Pow(10, -8), because: "numerical salary calculation might be rounded to conform legal stuff");
+    }
+
+    [Test]
+    public void Constructor_DefaultParams_ShouldBeAbleToEatChocolate()
+    {
+        // Arrange
+
+        // Act
+        Person sut = PersonFactory.CreateTestPerson();
+
+        // Assert
+        sut.CanEatChocolate.Should().BeTrue();
+    }
+
+    [Test]
+    public void Constructor_DontLikeChocolate_ShouldNotBeAbleToEatChocolate()
+    {
+        // Arrange
+
+        // Act
+        Person sut = PersonFactory.CreateTestPerson(fp => fp.CanEatChocolate = false);
+
+        // Assert
+        sut.CanEatChocolate.Should().BeFalse();
     }
 
     [Test]
