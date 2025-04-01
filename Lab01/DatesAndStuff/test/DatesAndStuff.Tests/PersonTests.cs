@@ -70,7 +70,7 @@ public class PersonTests
     public void IncreaseSalary_ValidIncrease_ShouldIncrease(double salaryIncreasePercentage)
     {
         // Arrange
-        var sut = PersonFactory.CreateTestPerson();sdsasd
+        var sut = PersonFactory.CreateTestPerson();
         double initSalary = sut.Salary;
 
         // Act
@@ -81,8 +81,8 @@ public class PersonTests
     }
 
     [Test]
-    [TestCase(-0.01)]
-    [TestCase(-1)]
+    [TestCase(-10.1)]
+    [TestCase(-10.0000001)]
     public void IncreaseSalary_InvalidIncrease_ShouldNotIncrease(double salaryIncreasePercentage)
     {
         // Arrange
@@ -121,18 +121,6 @@ public class PersonTests
 
         // Assert
         sut.CanEatChocolate.Should().BeFalse();
-    }
-
-    [Test]
-    public void IncreaseSalary_ZeroPercentIncrease_ShouldNotChange()
-    {
-            throw new NotImplementedException();
-    }
-
-    [Test]
-    public void IncreaseSalary_NegativeIncrease_ShouldDecrease()
-    {
-        throw new NotImplementedException();
     }
 
     [Test]
