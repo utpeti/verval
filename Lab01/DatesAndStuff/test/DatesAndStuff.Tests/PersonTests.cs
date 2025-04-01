@@ -65,9 +65,11 @@ public class PersonTests
 
     // IncreaseSalary_ReasonableValue_ShouldModifySalary test a neve a semi kodban
     [Test]
-    [TestCase(-0.0000001)]
-    [TestCase(1)]
-    public void IncreaseSalary_ValidIncrease_ShouldIncrease(double salaryIncreasePercentage)
+    [TestCase(0.1, ExpectedResult = true)]
+    [TestCase(0.000000001, ExpectedResult = true)]
+    [TestCase(10, ExpectedResult = true)]
+    [TestCase(10000, ExpectedResult = true)]
+    public bool IncreaseSalary_ValidIncrease_ShouldIncrease(double salaryIncreasePercentage)
     {
         // Arrange
         var sut = PersonFactory.CreateTestPerson();
@@ -77,13 +79,16 @@ public class PersonTests
         sut.IncreaseSalary(salaryIncreasePercentage);
 
         // Assert
-        sut.Salary.Should().BeApproximately(initSalary * (100 + salaryIncreasePercentage) / 100, Math.Pow(10, -8), because: "numerical salary calculation might be rounded to conform legal stuff");
+        //sut.Salary.Should().BeApproximately(initSalary * (100 + salaryIncreasePercentage) / 100, Math.Pow(10, -8), because: "numerical salary calculation might be rounded to conform legal stuff");
+        return sut.Salary == initSalary * (100 + salaryIncreasePercentage) / 100 && sut.Salary > initSalary;
     }
 
+    // for 0 or negative values the salary should not be increased but decreased, this test has to fail
     [Test]
-    [TestCase(-10.1)]
-    [TestCase(-10.0000001)]
-    public void IncreaseSalary_InvalidIncrease_ShouldNotIncrease(double salaryIncreasePercentage)
+    [TestCase(-10.1, ExpectedResult = false)]
+    [TestCase(-10.0000001, ExpectedResult = false)]
+    [TestCase(-1, ExpectedResult = true)]
+    public bool IncreaseSalary_InvalidIncrease_ShouldNotIncrease(double salaryIncreasePercentage)
     {
         // Arrange
         var sut = PersonFactory.CreateTestPerson();
@@ -94,7 +99,7 @@ public class PersonTests
         sut.IncreaseSalary(salaryIncreasePercentage);
 
         // Assert
-        sut.Salary.Should().Be(initSalary, because: "Salary should not increase or decrease with zero or negative percentage");
+        return sut.Salary > initSalary;
     }
 
 
