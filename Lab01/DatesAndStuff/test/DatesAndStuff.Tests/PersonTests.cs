@@ -64,15 +64,14 @@ public class PersonTests
     }
 
     // IncreaseSalary_ReasonableValue_ShouldModifySalary test a neve a semi kodban
-    //[TestCase(0.1, ExpectedResult = true)]
-    //[TestCase(0.000000001, ExpectedResult = true)]
-    //[TestCase(10, ExpectedResult = true)]
-    //[TestCase(10000, ExpectedResult = true)]
     [Test]
     [TestCase(0.1)]
     [TestCase(0.000000001)]
+    [TestCase(-0.1)]
+    [TestCase(-0.000000001)]
     [TestCase(10)]
     [TestCase(10000)]
+    [TestCase(-9.9999999)]
     public void IncreaseSalary_ValidIncrease_ShouldIncrease(double salaryIncreasePercentage)
     {
         // Arrange
@@ -86,13 +85,10 @@ public class PersonTests
         sut.Salary.Should().BeApproximately(initSalary * (100 + salaryIncreasePercentage) / 100, Math.Pow(10, -8), because: "numerical salary calculation might be rounded to conform legal stuff");
     }
 
-    //[TestCase(-10.1, ExpectedResult = false)]
-    //[TestCase(-10.0000001, ExpectedResult = false)]
-    //[TestCase(-1, ExpectedResult = true)]
     [Test]
-    [TestCase(-10.1)]
+    [TestCase(-10)]
     [TestCase(-10.0000001)]
-    [TestCase(-1)]
+    [TestCase(-1000)]
     public void IncreaseSalary_InvalidIncrease_ShouldNotIncrease(double salaryIncreasePercentage)
     {
         // Arrange
@@ -102,10 +98,10 @@ public class PersonTests
 
         // Act
         sut.IncreaseSalary(salaryIncreasePercentage);
-        bool result = sut.Salary > initSalary;
 
         // Assert
-        result.Should().BeFalse();
+        Assert.Throws<ArgumentOutOfRangeException>(() => sut.IncreaseSalary(salaryIncreasePercentage));
+
     }
 
 
