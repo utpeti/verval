@@ -14,6 +14,9 @@ namespace DatesAndStuff
 
         public void ConfirmPayment();
 
+        public void Cancel();
         public bool SuccessFul();
+
+        public double GetBalance();
     }
 }

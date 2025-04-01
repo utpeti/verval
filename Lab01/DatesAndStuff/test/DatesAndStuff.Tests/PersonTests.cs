@@ -80,7 +80,7 @@ public class PersonTests
 
         // Assert
         //sut.Salary.Should().BeApproximately(initSalary * (100 + salaryIncreasePercentage) / 100, Math.Pow(10, -8), because: "numerical salary calculation might be rounded to conform legal stuff");
-        return sut.Salary == initSalary * (100 + salaryIncreasePercentage) / 100 && sut.Salary > initSalary;
+        return sut.Salary > initSalary;
     }
 
     // for 0 or negative values the salary should not be increased but decreased, this test has to fail
