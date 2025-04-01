@@ -81,11 +81,9 @@ public class PersonTests
 
         // Act
         sut.IncreaseSalary(salaryIncreasePercentage);
-        bool result = sut.Salary > initSalary;
 
         // Assert
-        //sut.Salary.Should().BeApproximately(initSalary * (100 + salaryIncreasePercentage) / 100, Math.Pow(10, -8), because: "numerical salary calculation might be rounded to conform legal stuff");
-        result.Should().BeTrue();
+        sut.Salary.Should().BeApproximately(initSalary * (100 + salaryIncreasePercentage) / 100, Math.Pow(10, -8), because: "numerical salary calculation might be rounded to conform legal stuff");
     }
 
     //[TestCase(-10.1, ExpectedResult = false)]
