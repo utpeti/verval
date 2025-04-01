@@ -16,7 +16,7 @@ namespace DatesAndStuff.Tests
                 new EmploymentInformation(
                     54,
                     new Employer("RO1234567", "Valami city valami hely", "Dagobert bacsi", new List<int> { 6201, 7210 })),
-                new TestPaymentService(600), // Elegendő egyenleg
+                new TestPaymentService(600), // elegendo egyenleg
                 new LocalTaxData("4367558"),
                 new FoodPreferenceParams
                 {
@@ -41,7 +41,7 @@ namespace DatesAndStuff.Tests
                 new EmploymentInformation(
                     54,
                     new Employer("RO1234567", "Valami city valami hely", "Dagobert bacsi", new List<int> { 6201, 7210 })),
-                new TestPaymentService(400), // Nem elegendő egyenleg
+                new TestPaymentService(400), // Nem elegendo egyenleg
                 new LocalTaxData("4367558"),
                 new FoodPreferenceParams
                 {
