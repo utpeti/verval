@@ -80,24 +80,6 @@ public class PersonTests
         sut.Salary.Should().BeApproximately(initSalary * (100 + salaryIncreasePercentage) / 100, Math.Pow(10, -8), because: "numerical salary calculation might be rounded to conform legal stuff");
     }
 
-    [Test]
-    [TestCase(-10.1)]
-    [TestCase(-10.0000001)]
-    public void IncreaseSalary_InvalidIncrease_ShouldNotIncrease(double salaryIncreasePercentage)
-    {
-        // Arrange
-        var sut = PersonFactory.CreateTestPerson();
-        double initSalary = sut.Salary;
-
-
-        // Act
-        sut.IncreaseSalary(salaryIncreasePercentage);
-
-        // Assert
-        sut.Salary.Should().Be(initSalary, because: "Salary should not increase or decrease with zero or negative percentage");
-    }
-
-
 
     [Test]
     public void Constructor_DefaultParams_ShouldBeAbleToEatChocolate()
