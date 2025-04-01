@@ -64,12 +64,16 @@ public class PersonTests
     }
 
     // IncreaseSalary_ReasonableValue_ShouldModifySalary test a neve a semi kodban
+    //[TestCase(0.1, ExpectedResult = true)]
+    //[TestCase(0.000000001, ExpectedResult = true)]
+    //[TestCase(10, ExpectedResult = true)]
+    //[TestCase(10000, ExpectedResult = true)]
     [Test]
-    [TestCase(0.1, ExpectedResult = true)]
-    [TestCase(0.000000001, ExpectedResult = true)]
-    [TestCase(10, ExpectedResult = true)]
-    [TestCase(10000, ExpectedResult = true)]
-    public bool IncreaseSalary_ValidIncrease_ShouldIncrease(double salaryIncreasePercentage)
+    [TestCase(0.1)]
+    [TestCase(0.000000001)]
+    [TestCase(10)]
+    [TestCase(10000)]
+    public void IncreaseSalary_ValidIncrease_ShouldIncrease(double salaryIncreasePercentage)
     {
         // Arrange
         var sut = PersonFactory.CreateTestPerson();
@@ -77,18 +81,21 @@ public class PersonTests
 
         // Act
         sut.IncreaseSalary(salaryIncreasePercentage);
+        bool result = sut.Salary > initSalary;
 
         // Assert
         //sut.Salary.Should().BeApproximately(initSalary * (100 + salaryIncreasePercentage) / 100, Math.Pow(10, -8), because: "numerical salary calculation might be rounded to conform legal stuff");
-        return sut.Salary > initSalary;
+        result.Should().BeTrue();
     }
 
-    // for 0 or negative values the salary should not be increased but decreased, this test has to fail
+    //[TestCase(-10.1, ExpectedResult = false)]
+    //[TestCase(-10.0000001, ExpectedResult = false)]
+    //[TestCase(-1, ExpectedResult = true)]
     [Test]
-    [TestCase(-10.1, ExpectedResult = false)]
-    [TestCase(-10.0000001, ExpectedResult = false)]
-    [TestCase(-1, ExpectedResult = true)]
-    public bool IncreaseSalary_InvalidIncrease_ShouldNotIncrease(double salaryIncreasePercentage)
+    [TestCase(-10.1)]
+    [TestCase(-10.0000001)]
+    [TestCase(-1)]
+    public void IncreaseSalary_InvalidIncrease_ShouldNotIncrease(double salaryIncreasePercentage)
     {
         // Arrange
         var sut = PersonFactory.CreateTestPerson();
@@ -97,9 +104,10 @@ public class PersonTests
 
         // Act
         sut.IncreaseSalary(salaryIncreasePercentage);
+        bool result = sut.Salary > initSalary;
 
         // Assert
-        return sut.Salary > initSalary;
+        result.Should().BeFalse();
     }
 
 
