@@ -11,6 +11,17 @@ namespace DatesAndStuff.Tests
         uint startCallCount = 0;
         uint specifyCallCount = 0;
         uint confirmCallCount = 0;
+        bool isCanceled = false;
+        double balance = 0;
+
+        public TestPaymentService(double initialBalance)
+        {
+            balance = initialBalance;
+        }
+
+        public TestPaymentService()
+        {
+        }
 
         public void StartPayment()
         {
@@ -39,6 +50,19 @@ namespace DatesAndStuff.Tests
         public bool SuccessFul()
         {
             return startCallCount == 1 && specifyCallCount == 1 && confirmCallCount == 1;
+        }
+
+        public void Cancel()
+        {
+            if (startCallCount == 0)
+                throw new Exception("Cannot cancel before starting payment");
+
+            isCanceled = true;
+        }
+
+        public double GetBalance()
+        {
+            return balance;
         }
     }
 }
