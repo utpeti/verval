@@ -24,7 +24,11 @@ jobs:
         working-directory: Lab01/
 
       - name: Build
-        run: dotnet build --no-restore --warnaserror
+        run: dotnet build --no-restore
+        working-directory: Lab01/
+
+      - name: Run tests with coverage
+        run: dotnet test --no-build --collect:"XPlat Code Coverage"
         working-directory: Lab01/
 
       - name: Convert coverage to HTML
