@@ -1,9 +1,5 @@
 name: Build and Analyze
 
-permissions:
-  contents: read
-  actions: read
-
 on:
   push:
     branches: [Lab_03]
@@ -37,7 +33,7 @@ jobs:
           reportgenerator -reports:**/coverage.cobertura.xml -targetdir:coveragereport -reporttypes:Html
 
       - name: Upload HTML Report as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: code-coverage-report
           path: coverager eport
