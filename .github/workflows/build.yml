@@ -1,0 +1,30 @@
+name: Build and Analyze
+
+on:
+  push:
+    branches: [Lab_03]
+  pull_request:
+    branches: [Lab_03]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        working-directory: Lab01/
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "8.0.x"
+        working-directory: Lab01/
+
+      - name: Restore
+        run: dotnet restore
+        working-directory: Lab01/
+
+      - name: Build
+        run: dotnet build --no-restore --warnaserror
+        working-directory: Lab01/
