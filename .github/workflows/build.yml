@@ -2,9 +2,9 @@ name: Build and Analyze
 
 on:
   push:
-    branches: [ main ]
+    branches: [ Lab_03 ]
   pull_request:
-    branches: [ main ]
+    branches: [ Lab_03 ]
 
 jobs:
   build:
