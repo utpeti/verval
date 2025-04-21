@@ -14,6 +14,8 @@ namespace DatesAndStuff.Tests
         bool isCanceled = false;
         double balance = 0;
 
+        float x = (float)6.5;
+
         public TestPaymentService(double initialBalance)
         {
             balance = initialBalance;
