@@ -13,7 +13,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        working-directory: Lab01/
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
