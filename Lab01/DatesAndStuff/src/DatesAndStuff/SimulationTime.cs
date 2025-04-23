@@ -287,7 +287,7 @@ namespace DatesAndStuff
             return this + timeSpan;
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             throw new NotImplementedException();
         }
