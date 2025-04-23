@@ -192,14 +192,14 @@ namespace DatesAndStuff
             return TotalMilliseconds.GetHashCode();
         }
 
-        [DebuggerStepThrough]
-        public override bool Equals(object obj)
-        {
-            if (!(obj is SimulationTime))
-                return false;
-            var other = (SimulationTime)obj;
-            return this.TotalMilliseconds == other.TotalMilliseconds;
-        }
+        //[DebuggerStepThrough]
+        //public override bool Equals(object obj)
+        //{
+        //    if (!(obj is SimulationTime))
+        //        return false;
+        //    var other = (SimulationTime)obj;
+        //    return this.TotalMilliseconds == other.TotalMilliseconds;
+        //}
 
         [DebuggerStepThrough]
         public bool Equals(SimulationTime other)

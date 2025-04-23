@@ -7,7 +7,7 @@
         /// </summary>
         public string UAT { get; private set; }
 
-        public List<TaxItem> TaxItems { get; set; }
+        required public List<TaxItem> TaxItems { get; set; }
 
         public double DiscountPercentage { get; set; }
 
