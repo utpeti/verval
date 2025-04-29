@@ -22,7 +22,7 @@
     "validate": "html-validate './public/*.html'",
     "prepare": "husky",
     "test": "echo 'No tests yet'",
-    "format-check": "echo 'No format check yet'"
+    "lint-fix": "eslint . --fix --ext .js,.jsx,.ts,.tsx && prettier --write ."
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
