@@ -21,7 +21,7 @@
     "format": "prettier --write .",
     "validate": "html-validate './public/*.html'",
     "prepare": "husky",
-    "test": "echo 'No tests yet'",
+    "test": "echo 'No tests yet.'",
     "lint-fix": "eslint . --fix --ext .js,.jsx,.ts,.tsx && prettier --write ."
   },
   "dependencies": {
