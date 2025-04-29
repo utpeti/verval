@@ -28,7 +28,15 @@ namespace DatesAndStuff.Tests
         // Default time is not current time.
         public void SimulationTime_Construction()
         {
-            throw new NotImplementedException();
+            var now = new DateTime(2024, 1, 1);
+            var fromDateTime = new SimulationTime(now);
+            var fromYMD = new SimulationTime(2024, 1, 1);
+            var fromYMDHMS = new SimulationTime(2024, 1, 1, 0, 0, 0);
+            var fromString = new SimulationTime(now.Ticks.ToString());
+
+            Assert.AreEqual(fromDateTime.Ticks, fromYMD.Ticks);
+            Assert.AreEqual(fromDateTime.Ticks, fromYMDHMS.Ticks);
+            Assert.AreEqual(fromDateTime.Ticks, fromString.Ticks);
         }
 
         [Test]

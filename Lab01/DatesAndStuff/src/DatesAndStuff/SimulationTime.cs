@@ -12,6 +12,8 @@ namespace DatesAndStuff
         public static readonly SimulationTime MaxValue = new SimulationTime(DateTime.MaxValue);
         public static readonly SimulationTime MinValue = new SimulationTime(0);
         public static readonly TimeSpan OneMillisecond = TimeSpan.FromMilliseconds(1);
+        public long Ticks => this.logicalTicks;
+
 
         /// <summary>
         /// Used to convert logical counter value into physical time.
