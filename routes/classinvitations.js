@@ -41,13 +41,12 @@ router.post('/acceptinvitation', express.json(), authorize('student'), async (re
     await dbClass.addUserToClass(classID, user._id);
     await dbUser.deleteInvitationFromUser(user, classID);
 
-    res.status(200).json({ message: 'Invitation accepted' });
+    return res.status(200).json({ message: 'Invitation accepted' });
   } catch (err) {
     console.error('Error in /acceptinvitation:', err);
-    res.status(500).json({ message: `ERROR: ${err.message}` });
+    return res.status(500).json({ message: `ERROR: ${err.message}` });
   }
 });
-
 
 router.post('/declineinvitation', express.json(), authorize('student'), async (req, res) => {
   try {
