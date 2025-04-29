@@ -1,0 +1,7 @@
+organization=utpeti
+projectKey=webprog-lab
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.62830
+dashboardUrl=https://sonarcloud.io/dashboard?id=webprog-lab
+ceTaskId=AZaDE708v0tK42TL8Jin
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZaDE708v0tK42TL8Jin
