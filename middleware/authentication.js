@@ -11,4 +11,4 @@ router.get('/*', (req, res, next) => {
   }
 });
 
-export default router
+export default router;
