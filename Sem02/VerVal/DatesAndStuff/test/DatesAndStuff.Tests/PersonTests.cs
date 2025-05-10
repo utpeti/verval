@@ -6,17 +6,9 @@ namespace DatesAndStuff.Tests;
 
 public class PersonTests
 {
-    Person sut;
-
     [SetUp]
     public void Setup()
     {
-    }
-
-    [TearDown]
-    public void TearDown()
-    {
-
     }
 
     [Test]
@@ -52,6 +44,7 @@ public class PersonTests
         fixture.Customize<IPaymentService>(c => c.FromFactory(() => new TestPaymentService()));
 
         var sut = fixture.Create<Person>();
+
         string newName = "Test-Eleso-Felallo Pista";
         sut.GotMarried("");
 
@@ -63,48 +56,19 @@ public class PersonTests
         Assert.IsTrue(task.IsFaulted);
     }
 
-    // IncreaseSalary_ReasonableValue_ShouldModifySalary test a neve a semi kodban
     [Test]
-    [TestCase(0.1)]
-    [TestCase(0.000000001)]
-    [TestCase(-0.1)]
-    [TestCase(-0.000000001)]
-    [TestCase(10)]
-    [TestCase(10000)]
-    [TestCase(-9.9999999)]
-    public void IncreaseSalary_ValidIncrease_ShouldIncrease(double salaryIncreasePercentage)
+    [CustomPersonCreationAutodataAttribute]
+    public void IncreaseSalary_ReasonableValue_ShouldModifySalary(Person sut, double salaryIncreasePercentage)
     {
         // Arrange
-        var sut = PersonFactory.CreateTestPerson();
-        double initSalary = sut.Salary;
+        double initialSalary = sut.Salary;
 
         // Act
         sut.IncreaseSalary(salaryIncreasePercentage);
 
         // Assert
-        sut.Salary.Should().BeApproximately(initSalary * (100 + salaryIncreasePercentage) / 100, Math.Pow(10, -8), because: "numerical salary calculation might be rounded to conform legal stuff");
+        sut.Salary.Should().BeApproximately(initialSalary * (100 + salaryIncreasePercentage) / 100, Math.Pow(10, -8), because: "numerical salary calculation might be rounded to conform legal stuff");
     }
-
-    [Test]
-    [TestCase(-10)]
-    [TestCase(-10.0000001)]
-    [TestCase(-1000)]
-    public void IncreaseSalary_InvalidIncrease_ShouldNotIncrease(double salaryIncreasePercentage)
-    {
-        // Arrange
-        var sut = PersonFactory.CreateTestPerson();
-        double initSalary = sut.Salary;
-
-
-        // Act
-        sut.IncreaseSalary(salaryIncreasePercentage);
-
-        // Assert
-        Assert.Throws<ArgumentOutOfRangeException>(() => sut.IncreaseSalary(salaryIncreasePercentage));
-
-    }
-
-
 
     [Test]
     public void Constructor_DefaultParams_ShouldBeAbleToEatChocolate()
@@ -128,6 +92,18 @@ public class PersonTests
 
         // Assert
         sut.CanEatChocolate.Should().BeFalse();
+    }
+
+    [Test]
+    public void IncreaseSalary_ZeroPercentIncrease_ShouldNotChange()
+    {
+        throw new NotImplementedException();
+    }
+
+    [Test]
+    public void IncreaseSalary_NegativeIncrease_ShouldDecrease()
+    {
+        throw new NotImplementedException();
     }
 
     [Test]

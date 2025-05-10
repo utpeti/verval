@@ -82,19 +82,9 @@ namespace DatesAndStuff
         public bool PerformSubsriptionPayment()
         {
             PreferredPayment.StartPayment();
-
-            double balance = PreferredPayment.GetBalance();
-
-            if (balance < SubscriptionFee)
-            {
-                PreferredPayment.Cancel();
-                return false;
-            }
-
             PreferredPayment.SpecifyAmount(SubscriptionFee);
             PreferredPayment.ConfirmPayment();
-
-            return PreferredPayment.SuccessFul();
+            return true;
         }
     }
 }
