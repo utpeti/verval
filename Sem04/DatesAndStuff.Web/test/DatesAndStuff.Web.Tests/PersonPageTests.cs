@@ -98,13 +98,44 @@ namespace DatesAndStuff.Web.Tests
         }
 
         [Test]
-        public void Person_SalaryIncrease_ShouldIncrease()
+        public void Person_SalaryIncrease_ShouldShowError_WhenPercentageBelowMinusTen()
         {
             // Arrange
             driver.Navigate().GoToUrl(BaseURL);
             driver.FindElement(By.XPath("//*[@data-test='PersonPageNavigation']")).Click();
 
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            Thread.Sleep(2000);
+
+            var input = wait.Until(ExpectedConditions.ElementExists(By.XPath("//*[@data-test='SalaryIncreasePercentageInput']")));
+            input.Clear();
+            input.SendKeys("-15");
+
+            // Act
+            var submitButton = wait.Until(ExpectedConditions.ElementExists(By.XPath("//*[@data-test='SalaryIncreaseSubmitButton']")));
+            submitButton.Click();
+
+            // Assert
+            var errorSummary = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("/html/body/div[1]/main/article/form/ul/li")));
+            var fieldError = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("/html/body/div[1]/main/article/form/div[2]/div/div")));
+
+            errorSummary.Text.Should().NotBeNullOrWhiteSpace("hibauzenetnek meg kell jelennie az oldal tetejen");
+            fieldError.Text.Should().NotBeNullOrWhiteSpace("hibauzenetnek meg kell jelennie az input mezo alatt is");
+        }
+
+        [Test]
+        [TestCase(5, 5250)]
+        [TestCase(10, 5500)]
+        [TestCase(0, 5000)]
+        [TestCase(-9.9999, 10000)]
+        public void Person_SalaryIncrease_ShouldIncrease(double percentage, double expectedSalary)
+        {
+            // Arrange
+            driver.Navigate().GoToUrl(BaseURL);
+            driver.FindElement(By.XPath("//*[@data-test='PersonPageNavigation']")).Click();
+
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            Thread.Sleep(2000);
 
             var input = wait.Until(ExpectedConditions.ElementExists(By.XPath("//*[@data-test='SalaryIncreasePercentageInput']")));
             input.Clear();
