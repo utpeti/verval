@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Reflection;
 using System.Text;
 using FluentAssertions;
@@ -98,7 +99,8 @@ namespace DatesAndStuff.Web.Tests
         }
 
         [Test]
-        public void Person_SalaryIncrease_ShouldShowError_WhenPercentageBelowMinusTen()
+        [TestCase(-10.00001, 1000)]
+        public void Person_SalaryIncrease_ShouldShowError_WhenPercentageBelowMinusTen(double percentage, double expectedSalary)
         {
             // Arrange
             driver.Navigate().GoToUrl(BaseURL);
@@ -109,7 +111,7 @@ namespace DatesAndStuff.Web.Tests
 
             var input = wait.Until(ExpectedConditions.ElementExists(By.XPath("//*[@data-test='SalaryIncreasePercentageInput']")));
             input.Clear();
-            input.SendKeys("-15");
+            input.SendKeys(percentage.ToString(CultureInfo.InvariantCulture));
 
             // Act
             var submitButton = wait.Until(ExpectedConditions.ElementExists(By.XPath("//*[@data-test='SalaryIncreaseSubmitButton']")));
@@ -127,7 +129,8 @@ namespace DatesAndStuff.Web.Tests
         [TestCase(5, 5250)]
         [TestCase(10, 5500)]
         [TestCase(0, 5000)]
-        [TestCase(-9.9999, 10000)]
+        [TestCase(-9.9999, 4500)]
+        [TestCase(-10, 4500)]
         public void Person_SalaryIncrease_ShouldIncrease(double percentage, double expectedSalary)
         {
             // Arrange
@@ -135,11 +138,11 @@ namespace DatesAndStuff.Web.Tests
             driver.FindElement(By.XPath("//*[@data-test='PersonPageNavigation']")).Click();
 
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
 
             var input = wait.Until(ExpectedConditions.ElementExists(By.XPath("//*[@data-test='SalaryIncreasePercentageInput']")));
             input.Clear();
-            input.SendKeys("5");
+            input.SendKeys(percentage.ToString(CultureInfo.InvariantCulture));
 
             // Act
             var submitButton = wait.Until(ExpectedConditions.ElementExists(By.XPath("//*[@data-test='SalaryIncreaseSubmitButton']")));
@@ -149,7 +152,7 @@ namespace DatesAndStuff.Web.Tests
             // Assert
             var salaryLabel = wait.Until(ExpectedConditions.ElementExists(By.XPath("//*[@data-test='DisplayedSalary']")));
             var salaryAfterSubmission = double.Parse(salaryLabel.Text);
-            salaryAfterSubmission.Should().BeApproximately(5250, 0.001);
+            salaryAfterSubmission.Should().BeApproximately(expectedSalary, 0.001);
         }
         private bool IsElementPresent(By by)
         {
